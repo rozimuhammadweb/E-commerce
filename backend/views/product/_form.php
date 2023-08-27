@@ -16,9 +16,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'category_id')->textInput() ?>
+    <?php $data = \yii\helpers\ArrayHelper::map($model->getCategories(), 'id', 'name');
+    echo $form->field($model, 'category_id')->dropdownList($data,
+        ['prompt' => 'Select']
+    );?>
 
-    <?= $form->field($model, 'brand_id')->textInput() ?>
+    <?php $data = \yii\helpers\ArrayHelper::map($model->getBrands(), 'id', 'name');
+    echo $form->field($model, 'brand_id')->dropdownList($data,
+        ['prompt' => 'Select']
+    );?>
 
     <?= $form->field($model, 'SKU')->textInput(['maxlength' => true]) ?>
 
@@ -28,11 +34,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'price')->textInput() ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+    <?= $form->field($model, 'created_at')->textInput(['type' => 'date', 'value' => date('Y-m-d')]) ?>
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?= $form->field($model, 'updated_at')->textInput(['type' => 'date', 'value' => date('Y-m-d')]) ?>
 
-    <?= $form->field($model, 'deleted_at')->textInput() ?>
+    <?= $form->field($model, 'deleted_at')->textInput(['type' => 'date', 'value' => date('Y-m-d')]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn-fill-md radius-4 text-light bg-light-sea-green']) ?>
