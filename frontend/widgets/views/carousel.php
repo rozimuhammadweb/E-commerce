@@ -1,4 +1,4 @@
-<div class="homev3-slider-with-banners row">
+<div class="homev3-slider-with-banners ">
     <div class="slider">
         <div class="home-v3-slider home-slider">
             <div class="slider-1">
