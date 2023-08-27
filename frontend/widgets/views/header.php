@@ -1,3 +1,9 @@
+<?php 
+
+
+?>
+
+
 <div class="top-bar top-bar-v2">
     <div class="col-full">
         <ul id="menu-top-bar-left" class="nav menu-top-bar-left">
@@ -41,14 +47,30 @@
                 </ul>
                 <!-- .dropdown-menu -->
             </li>
+            <?php
+
+use yii\bootstrap5\Html;
+use yii\helpers\Url;
+
+ if (Yii::$app->user->isGuest){ ?>
             <li class="menu-item">
-                <a title="Register" href="http://e-commerce/site/signup">
+                <a title="Register" href="/site/signup">
                     <i class="tm tm-login-register"></i>Register</a>
             </li>
             <li class="menu-item">
                 <a title="My Account" href="/site/login">
                     <i class="tm tm-login-register"></i>Login</a>
             </li>
+            <?php } else {  echo Html::beginForm(['/site/logout'], 'post', ['class' => 'menu-item']) 
+            . Html::submitButton(
+                'Logout (' . Yii::$app->user->identity->username . ')',
+                ['class' => '<i class="tm tm-login-register"></i>']
+            )
+            . Html::endForm(); ?>
+              
+            <?php } ?>
+
+
         </ul>
         <!-- .nav -->
     </div>
