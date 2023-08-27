@@ -143,4 +143,14 @@ class Product extends \yii\db\ActiveRecord
     {
         return $this->hasOne(ProductImage::class, ['product_id' => 'id']);
     }
+
+    public function getCategories()
+    {
+        return Category::find()->all();
+    }
+
+    public function getBrands()
+    {
+        return Brand::find()->all();
+    }
 }
