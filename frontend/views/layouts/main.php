@@ -33,7 +33,6 @@ AppAsset::register($this);
             </div>
         </div>
     </div>
-
 </div>
 
 <?= \frontend\widgets\Footer::widget()?>
