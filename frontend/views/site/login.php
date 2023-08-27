@@ -17,31 +17,24 @@ $this->params['breadcrumbs'][] = $this->title;
         <div id="customer_login" class="u-columns col2-set">
             <div class="u-column1 col-1">
                 <h2>Login</h2>
-                    <p class="form-row form-row-wide">
-                        <label for="username">Username or email address
-                            <span class="required">*</span>
-                            <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label(false) ?>
-                        </label>
-                    </p>
-                    <p class="form-row form-row-wide">
-                        <label for="password">Password
-                            <span class="required">*</span>
-                        </label>
-                        <?= $form->field($model, 'password')->passwordInput()->label(false) ?>
+                <p class="form-row form-row-wide">
 
-                    </p>
-
-                    <div class="my-1 mx-0" style="color:#999;">
-                        If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
-                        <br>
-                        Need new verification email? <?= Html::a('Resend', ['site/resend-verification-email']) ?>
-                    </div>
-                    <p class="form-row">
-                        <?= $form->field($model, 'rememberMe',)->checkbox() ?>
-                    <div class="form-group">
-                        <?= Html::submitButton('Login', ['class' => 'btn btn-primary px-5 ml-4 d-flex', 'name' => 'login-button']) ?>
-                    </div>
-                    </p>
+                    <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                </p>
+                <p class="form-row form-row-wide">
+                    <?= $form->field($model, 'password')->passwordInput() ?>
+                </p>
+                <div class="my-1 mx-0" style="color:#999;">
+                    If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
+                    <br>
+                    Need new verification email? <?= Html::a('Resend', ['site/resend-verification-email']) ?>
+                </div>
+                <p class="form-row">
+                    <?= $form->field($model, 'rememberMe',)->checkbox() ?>
+                <div class="form-group">
+                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary px-5 ml-4 d-flex', 'name' => 'login-button']) ?>
+                </div>
+                </p>
                 <!-- .woocommerce-form-login -->
             </div>
             <!-- .col-1 -->
