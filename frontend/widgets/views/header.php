@@ -42,8 +42,12 @@
                 <!-- .dropdown-menu -->
             </li>
             <li class="menu-item">
-                <a title="My Account" href="login-and-register.html">
-                    <i class="tm tm-login-register"></i>Register or Sign in</a>
+                <a title="Register" href="http://e-commerce/site/signup">
+                    <i class="tm tm-login-register"></i>Register</a>
+            </li>
+            <li class="menu-item">
+                <a title="My Account" href="/site/login">
+                    <i class="tm tm-login-register"></i>Login</a>
             </li>
         </ul>
         <!-- .nav -->
