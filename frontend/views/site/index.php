@@ -8,3 +8,7 @@ $this->title = 'E-commerce';
 <?= \frontend\widgets\HotArrivals::widget()?>
 <?= \frontend\widgets\Trending::widget()?>
 <?= \frontend\widgets\VisualEntertainment::widget()?>
+<?= \frontend\widgets\RecentlyViewed::widget()?>
+<?= \frontend\widgets\BrandsCarousel::widget()?>
+<?= \frontend\widgets\SingleProduct::widget()?>
+
