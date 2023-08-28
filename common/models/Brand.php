@@ -16,6 +16,8 @@ use Yii;
  */
 class Brand extends \yii\db\ActiveRecord
 {
+
+    public $imageFile;
     /**
      * {@inheritdoc}
      */
@@ -30,7 +32,9 @@ class Brand extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['name', 'logo', 'short_name'], 'required'],
             [['name', 'logo', 'short_name'], 'string', 'max' => 255],
+            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
         ];
     }
 
@@ -55,5 +59,15 @@ class Brand extends \yii\db\ActiveRecord
     public function getProducts()
     {
         return $this->hasMany(Product::class, ['brand_id' => 'id']);
+    }
+
+    public function upload()
+    {
+        if ($this->validate()) {
+            $this->imageFile->saveAs('uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
