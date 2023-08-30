@@ -75,7 +75,7 @@ class BrandController extends Controller
             if ($model->load($this->request->post()) && $model->save()) {
                 $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
                 $imageName = time();
-                $model->image = $imageName.'.'.$model->imageFile->extension;
+                $model->logo = $imageName.'.'.$model->imageFile->extension;
                 $model->save();
                 if ($model->upload($imageName)){
                     return $this->redirect(['view', 'id' => $model->id]);

@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\file\FileInput;
+
 
 /** @var yii\web\View $this */
 /** @var common\models\Product $model */
@@ -10,7 +12,7 @@ use yii\widgets\ActiveForm;
 
 <div class="product-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
@@ -30,9 +32,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'specification')->textInput() ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status')->checkbox() ?>
 
     <?= $form->field($model, 'price')->textInput() ?>
+
+    <?= $form->field($model, 'imageFile')->fileInput(['multiple' => true,'accept' => 'image/*']) ?>
 
     <?= $form->field($model, 'created_at')->textInput(['type' => 'date', 'value' => date('Y-m-d')]) ?>
 

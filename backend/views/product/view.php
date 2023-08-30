@@ -45,3 +45,11 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+<?php foreach ($model->productImage as $productImage): ?>
+    <?php if (is_object($productImage) && property_exists($productImage, 'image')): ?>
+        <img style="width: 100px;" src="<?= Yii::getAlias('@web') ?>/uploads/productImage/<?= $productImage->image ?>">
+    <?php endif; ?>
+<?php endforeach; ?>
+
+
+
