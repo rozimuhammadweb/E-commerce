@@ -32,7 +32,7 @@
                                                 </p>
                                                 <div class="clear"></div>
                                                 <p class="form-row">
-                                                    <input type="submit" class="btn btn-primary" name="track" value="Track" >
+                                                    <input type="submit" class="btn btn-primary bg-primary" name="track" value="Track" >
                                                 </p>
                                             </form>
                                             <!-- .track_order -->
