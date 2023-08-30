@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var common\models\Product $model */
+/** @var common\models\Category $model */
 
-$this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="product-view">
+<div class="category-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -30,26 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'title',
-            'description:ntext',
-            'category_id',
-            'brand_id',
-            'SKU',
-            'specification',
+            'PID',
+            'name',
             'status',
-            'price',
-            'created_at',
-            'updated_at',
-            'deleted_at',
+            'image',
         ],
     ]) ?>
 
 </div>
-<?php foreach ($model->productImage as $productImage): ?>
-    <?php if (is_object($productImage) && property_exists($productImage, 'image')): ?>
-        <img style="width: 100px;" src="<?= Yii::getAlias('@web') ?>/uploads/productImage/<?= $productImage->image ?>">
-    <?php endif; ?>
-<?php endforeach; ?>
-
-
-
