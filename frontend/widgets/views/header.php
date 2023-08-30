@@ -16,7 +16,7 @@
                 <a title="Quality Guarantee of products" href="shop.html">Quality Guarantee of products</a>
             </li>
             <li class="menu-item animate-dropdown">
-                <a title="Fast returnings program" href="track-your-order.html">Fast returnings program</a>
+                <a title="Fast returnings program" href="<?= \yii\helpers\Url::to('/track/index')?>">Fast returnings program</a>
             </li>
             <li class="menu-item animate-dropdown">
                 <a title="No additional fees" href="contact-v2.html">No additional fees</a>
