@@ -34,7 +34,7 @@ class Brand extends \yii\db\ActiveRecord
         return [
             [['name', 'logo', 'short_name'], 'required'],
             [['name', 'logo', 'short_name'], 'string', 'max' => 255],
-            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
+            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
         ];
     }
 
@@ -61,10 +61,10 @@ class Brand extends \yii\db\ActiveRecord
         return $this->hasMany(Product::class, ['brand_id' => 'id']);
     }
 
-    public function upload()
+    public function upload($imageName)
     {
         if ($this->validate()) {
-            $this->imageFile->saveAs('uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+            $this->imageFile->saveAs('uploads/' . $imageName . '.' . $this->imageFile->extension);
             return true;
         } else {
             return false;
