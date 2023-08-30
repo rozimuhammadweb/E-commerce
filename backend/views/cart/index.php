@@ -31,10 +31,18 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'product_id',
+            [
+                    'attribute'=>'product_id',
+                'value'=>'product.title',
+                'filter'=>\yii\helpers\ArrayHelper::map(\common\models\Product::find()->all(),'id','title')
+            ],
             'count',
             'session',
-            'user_id',
+            [
+                'attribute'=>'user_id',
+                'value'=>'user.username',
+                'filter'=>\yii\helpers\ArrayHelper::map(\common\models\User::find()->all(),'id','username')
+            ],
             //'added_at',
             [
                 'class' => ActionColumn::className(),

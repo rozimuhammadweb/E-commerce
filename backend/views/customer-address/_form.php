@@ -12,11 +12,20 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'customer_id')->textInput() ?>
+    <?php $data = \yii\helpers\ArrayHelper::map(\common\models\Customer::find()->all(), 'id', 'fullName');
+    echo $form->field($model, 'customer_id')->dropdownList($data,
+        ['prompt'=>'Select']
+    );?>
 
-    <?= $form->field($model, 'region_id')->textInput() ?>
+    <?php $data = \yii\helpers\ArrayHelper::map(\common\models\Region::find()->all(), 'id', 'name_uz');
+    echo $form->field($model, 'region_id')->dropdownList($data,
+        ['prompt'=>'Select']
+    );?>
 
-    <?= $form->field($model, 'district_id')->textInput() ?>
+    <?php $data = \yii\helpers\ArrayHelper::map(\common\models\District::find()->all(), 'id', 'name_uz');
+    echo $form->field($model, 'district_id')->dropdownList($data,
+        ['prompt'=>'Select']
+    );?>
 
     <?= $form->field($model, 'address')->textarea(['rows' => 6]) ?>
 

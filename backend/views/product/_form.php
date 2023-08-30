@@ -32,7 +32,10 @@ use kartik\file\FileInput;
 
     <?= $form->field($model, 'specification')->textInput() ?>
 
-    <?= $form->field($model, 'status')->checkbox() ?>
+    <?= $form->field($model, 'status')->radioList([
+        '1'=>'ACTIVE',
+        '0'=>'INACTIVE'
+    ])?>
 
     <?= $form->field($model, 'price')->textInput() ?>
 

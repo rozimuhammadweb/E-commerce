@@ -12,9 +12,11 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'order_id')->textInput() ?>
+    <?php $data = \yii\helpers\ArrayHelper::map(\common\models\Order::find()->all(),'id','id')?>
+    <?= $form->field($model, 'order_id')->dropDownList($data,['prompt'=>'Select']) ?>
 
-    <?= $form->field($model, 'product_id')->textInput() ?>
+    <?php $data = \yii\helpers\ArrayHelper::map(\common\models\Product::find()->all(),'id','title') ?>
+    <?= $form->field($model, 'product_id')->dropDownList($data,['prompt'=>'Select']) ?>
 
     <?= $form->field($model, 'count')->textInput() ?>
 
