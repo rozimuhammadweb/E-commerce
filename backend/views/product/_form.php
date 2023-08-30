@@ -32,7 +32,24 @@ use kartik\file\FileInput;
 
     <?= $form->field($model, 'specification')->textInput() ?>
 
-    <?= $form->field($model, 'status')->checkbox() ?>
+    <?= $form->field($model, 'status',
+        [
+            'template' => '<label>Status<span class="login-danger">*</span></label>{input}',
+        ])->radioList(
+        [
+            '1' => 'Active',     // Use 10 for Active
+            '-1' => 'In Active', // Use -10 for In Active
+        ],
+        [
+            'item' => function ($index, $label, $name, $checked, $value) {
+                return Html::radio($name, $checked, [
+                    'value' => $value,
+                    'label' => '<label>' . Html::encode($label) . '</label>',
+                    'class' => 'radio-inline'
+                ]);
+            }
+        ]
+    ) ?>
 
     <?= $form->field($model, 'price')->textInput() ?>
 

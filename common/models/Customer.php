@@ -40,6 +40,7 @@ class Customer extends \yii\db\ActiveRecord
         return [
             [['customer_user_id', 'status'], 'integer'],
             [['birth_date', 'registered_at'], 'safe'],
+            ['status', 'in', 'range' => [1, -1]],
             [['first_name', 'last_name', 'middle_name', 'gender'], 'string', 'max' => 255],
             [['customer_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => CustomerUser::class, 'targetAttribute' => ['customer_user_id' => 'id']],
         ];

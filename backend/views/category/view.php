@@ -32,7 +32,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'PID',
             'name',
-            'status',
+            [
+                'attribute' => 'status',
+                'value' => function($model) {
+                    return $model->status == -1 ? 'In Active' : 'Active';
+                }
+            ],
             'image',
         ],
     ]) ?>
