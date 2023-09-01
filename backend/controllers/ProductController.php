@@ -57,15 +57,17 @@ class ProductController extends Controller
      */
     public function actionView($id)
     {
-        $product = Product::findOne($id);
-
-        if ($product === null) {
+        $model = Product::findOne($id);
+    
+        if ($model === null) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    
         return $this->render('view', [
-            'model' => $product,
+            'model' => $model,
         ]);
     }
+    
 
     /**
      * Creates a new Product model.
