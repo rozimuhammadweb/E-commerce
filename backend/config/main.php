@@ -42,6 +42,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'product/delete-image/<id:\d+>' => 'product/delete-image',
             ],
         ],
 
