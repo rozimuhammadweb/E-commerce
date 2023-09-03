@@ -12,16 +12,19 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'order_id')->textInput() ?>
+    <?php $data = \yii\helpers\ArrayHelper::map(\common\models\Order::find()->all(),'id','id')?>
+    <?= $form->field($model, 'order_id')->dropDownList($data,['prompt'=>'Select']) ?>
 
     <?= $form->field($model, 'amount')->textInput() ?>
 
-    <?= $form->field($model, 'payment_system_id')->textInput() ?>
+    <?php $data = \yii\helpers\ArrayHelper::map(\common\models\PaymentSystem::find()->all(),'id','name')?>
+    <?= $form->field($model, 'payment_system_id')->dropDownList($data,['prompt'=>'Select']) ?>
 
     <?= $form->field($model, 'transaction_id')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+    <?= $form->field($model, 'created_at')->textInput(['type' => 'date', 'value' => date('Y-m-d')]) ?>
 
+<<<<<<< HEAD
     <?= $form->field($model, 'status',
         [
             'template' => '<label>Status<span class="login-danger">*</span></label>{input}',
@@ -40,6 +43,12 @@ use yii\widgets\ActiveForm;
             }
         ]
     ) ?>
+=======
+    <?= $form->field($model, 'status')->radioList([
+        '1'=>'ACTIVE',
+        '0'=>'INACTIVE'
+    ])?>
+>>>>>>> 91274e90ed65c120cc6eff4d3ec3ba906eff6c04
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn-fill-md radius-4 text-light bg-light-sea-green']) ?>

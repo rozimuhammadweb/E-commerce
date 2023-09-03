@@ -12,7 +12,8 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'product_id')->textInput() ?>
+    <?php $data = \yii\helpers\ArrayHelper::map(\common\models\Product::find()->all(),'id','title')?>
+    <?= $form->field($model, 'product_id')->dropDownList($data,['prompt'=>'Select']) ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 

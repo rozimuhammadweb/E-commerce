@@ -31,7 +31,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'product_id',
+            [
+                'attribute'=>'product_id',
+                'value'=>'product.title',
+                'filter'=>\yii\helpers\ArrayHelper::map(\common\models\Product::find()->all(),'id','title')
+            ],
             'title',
             'description:ntext',
             'keywords',

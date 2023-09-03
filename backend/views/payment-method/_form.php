@@ -12,7 +12,8 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'customer_id')->textInput() ?>
+    <?php $data = \yii\helpers\ArrayHelper::map(\common\models\Customer::find()->all(),'id','fullName')?>
+    <?= $form->field($model, 'customer_id')->dropDownList($data,['prompt'=>'Tanlang']) ?>
 
     <?= $form->field($model, 'card_name')->textInput(['maxlength' => true]) ?>
 

@@ -32,6 +32,7 @@ use kartik\file\FileInput;
 
     <?= $form->field($model, 'specification')->textInput() ?>
 
+<<<<<<< HEAD
     <?= $form->field($model, 'status',
         [
             'template' => '<label>Status<span class="login-danger">*</span></label>{input}',
@@ -50,6 +51,12 @@ use kartik\file\FileInput;
             }
         ]
     ) ?>
+=======
+    <?= $form->field($model, 'status')->radioList([
+        '1'=>'ACTIVE',
+        '0'=>'INACTIVE'
+    ])?>
+>>>>>>> 91274e90ed65c120cc6eff4d3ec3ba906eff6c04
 
     <?= $form->field($model, 'price')->textInput() ?>
 

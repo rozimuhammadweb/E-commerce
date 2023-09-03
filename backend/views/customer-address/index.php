@@ -31,9 +31,21 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'customer_id',
-            'region_id',
-            'district_id',
+            [
+                    'attribute'=>'customer_id',
+                'value'=>'customer.fullName',
+                'filter'=>\yii\helpers\ArrayHelper::map(\common\models\Customer::find()->all(),'id','fullName')
+            ],
+            [
+                    'attribute'=>'region_id',
+                'value'=>'region.name_uz',
+                'filter'=>\yii\helpers\ArrayHelper::map(\common\models\Region::find()->all(),'id','name_uz')
+            ],
+            [
+                    'attribute'=>'district_id',
+                'value'=>'district.name_uz',
+                'filter'=>\yii\helpers\ArrayHelper::map(\common\models\District::find()->all(),'id','name_uz')
+            ],
             'address:ntext',
             //'zipcode',
             //'phone_number',

@@ -57,15 +57,18 @@ class ProductController extends Controller
      */
     public function actionView($id)
     {
-        $product = Product::findOne($id);
+        $model = Product::findOne($id);
 
-        if ($product === null) {
+        if ($model === null) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    
         return $this->render('view', [
-            'model' => $product,
+            'model' => $model,
+
         ]);
     }
+    
 
     /**
      * Creates a new Product model.
@@ -104,17 +107,54 @@ class ProductController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
+{
+    $model = Product::findOne($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+    if ($model === null) {
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    // Load the related product images
+    $productImages = $model->getProductImages()->all();
+    $newProductImage = new ProductImage();
+
+
+    if ($model->load(\Yii::$app->request->post()) && $model->save()) {
+        // Handle related product images update or deletion here
+        // Example: You can add code here to manage product images
+
+        \Yii::$app->session->setFlash('success', 'Product updated successfully.');
+        return $this->redirect(['view', 'id' => $model->id]);
+    }
+
+    return $this->render('update', [
+        'model' => $model,
+        'productImages' => $productImages, // Pass related images to the view
+        'newProductImage' => $newProductImage, // Define and assign $newProductImage
+
+    ]);
+}
+
+public function actionDeleteImage($id)
+{
+    $productImage = ProductImage::findOne($id);
+
+    if ($productImage === null) {
+        throw new NotFoundHttpException('The requested image does not exist.');
+    }
+
+    // Delete the image file from the server
+    $imagePath = \Yii::getAlias('@webroot/uploads/productImage/') . $productImage->image;
+    
+    if (unlink($imagePath)) {
+        // Delete the image record from the database
+        $productImage->delete();
+    }
+
+    return $this->redirect(['update', 'id' => $productImage->product_id]);
+}
+
+
 
     /**
      * Deletes an existing Product model.

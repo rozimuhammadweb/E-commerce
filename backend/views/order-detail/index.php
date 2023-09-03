@@ -30,8 +30,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'order_id',
-            'product_id',
+            [
+                'attribute'=>'order_id',
+                'value'=>'order.id',
+                'filter'=>\yii\helpers\ArrayHelper::map(\common\models\Order::find()->all(),'id','id')
+            ],
+            [
+                'attribute'=>'product_id',
+                'value'=>'product.title',
+                'filter'=>\yii\helpers\ArrayHelper::map(\common\models\Product::find()->all(),'id','title')
+            ],
             'count',
             [
                 'class' => ActionColumn::className(),
