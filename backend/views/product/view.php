@@ -45,3 +45,17 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+
+
+
+<?php foreach ($model->getProductImages()->all() as $productImage): ?>
+    <img style="width: 100px;" src="<?= Yii::getAlias('@web') ?>/uploads/productImage/<?= $productImage->image ?>">
+<?php endforeach; ?>
+<!-- File input for uploading the image -->
+
+
+
+
+
+
+

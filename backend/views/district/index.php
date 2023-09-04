@@ -31,7 +31,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'region_id',
+            [
+                    'attribute'=>'region_id',
+                'value'=>'region.name_uz',
+                'filter'=>\yii\helpers\ArrayHelper::map(\common\models\Region::find()->all(),'id','name_uz')
+            ],
             'name_uz',
             'name_ru',
             'name_en',

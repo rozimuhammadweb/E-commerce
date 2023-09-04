@@ -30,10 +30,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'order_id',
+//            'id',
+            [
+                'attribute'=>'order_id',
+                'value'=>'order.id',
+                'filter'=>\yii\helpers\ArrayHelper::map(\common\models\Order::find()->all(),'id','id')
+            ],
             'amount',
-            'payment_system_id',
+            [
+                'attribute'=>'payment_system_id',
+                'value'=>'paymentSystem.name',
+                'filter'=>\yii\helpers\ArrayHelper::map(\common\models\PaymentSystem::find()->all(),'id','name')
+            ],
             'transaction_id',
             //'created_at',
             //'status',

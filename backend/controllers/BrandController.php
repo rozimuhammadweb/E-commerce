@@ -4,9 +4,11 @@ namespace backend\controllers;
 
 use common\models\Brand;
 use common\models\BrandSearch;
+use common\models\ProductImage;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * BrandController implements the CRUD actions for Brand model.
@@ -71,7 +73,14 @@ class BrandController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+                $imageName = time();
+                $model->logo = $imageName.'.'.$model->imageFile->extension;
+                $model->save();
+                if ($model->upload($imageName)){
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+
             }
         } else {
             $model->loadDefaultValues();

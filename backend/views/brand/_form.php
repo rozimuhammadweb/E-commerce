@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
+
 /** @var yii\web\View $this */
 /** @var common\models\Brand $model */
 /** @var yii\widgets\ActiveForm $form */
@@ -10,11 +11,11 @@ use yii\widgets\ActiveForm;
 
 <div class="brand-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+
+    <?= $form->field($model, 'imageFile')->fileInput(['multiple' => true,'accept' => 'image/*']) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'logo')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'short_name')->textInput(['maxlength' => true]) ?>
 

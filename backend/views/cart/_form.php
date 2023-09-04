@@ -12,15 +12,21 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'product_id')->textInput() ?>
+<!--    --><?php //= $form->field($model, 'product_id')->textInput() ?>
+    <?php $data = \yii\helpers\ArrayHelper::map(\common\models\Product::find()->all(), 'id', 'title');
+    echo $form->field($model, 'product_id')->dropdownList($data,
+        ['prompt'=>'Select']
+    );?>
 
     <?= $form->field($model, 'count')->textInput() ?>
 
     <?= $form->field($model, 'session')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
+    <?php $data = \yii\helpers\ArrayHelper::map(\common\models\User::find()->all(),'id','username')?>
+    <?= $form->field($model, 'user_id')->dropDownList($data,
+    ['prompt'=>'Select']) ?>
 
-    <?= $form->field($model, 'added_at')->textInput() ?>
+    <?= $form->field($model, 'added_at')->textInput(['type' => 'date', 'value' => date('Y-m-d')]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn-fill-md radius-4 text-light bg-light-sea-green']) ?>

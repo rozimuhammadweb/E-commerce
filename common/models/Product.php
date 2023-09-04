@@ -30,6 +30,8 @@ use Yii;
  */
 class Product extends \yii\db\ActiveRecord
 {
+
+    public $imageFile;
     /**
      * {@inheritdoc}
      */
@@ -48,6 +50,8 @@ class Product extends \yii\db\ActiveRecord
             [['category_id', 'brand_id', 'status', 'price'], 'integer'],
             [['specification', 'created_at', 'updated_at', 'deleted_at'], 'safe'],
             [['title', 'SKU'], 'string', 'max' => 255],
+            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
+
             [['brand_id'], 'exist', 'skipOnError' => true, 'targetClass' => Brand::class, 'targetAttribute' => ['brand_id' => 'id']],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['category_id' => 'id']],
         ];
@@ -68,6 +72,7 @@ class Product extends \yii\db\ActiveRecord
             'specification' => 'Specification',
             'status' => 'Status',
             'price' => 'Price',
+            
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'deleted_at' => 'Deleted At',
@@ -113,6 +118,10 @@ class Product extends \yii\db\ActiveRecord
     {
         return $this->hasMany(MetaTag::class, ['product_id' => 'id']);
     }
+    public function getProductImages()
+    {
+        return $this->hasMany(ProductImage::class, ['product_id' => 'id']);
+    }
 
     /**
      * Gets query for [[OrderDetails]].
@@ -143,4 +152,25 @@ class Product extends \yii\db\ActiveRecord
     {
         return $this->hasOne(ProductImage::class, ['product_id' => 'id']);
     }
+
+    public function getCategories()
+    {
+        return Category::find()->all();
+    }
+
+    public function getBrands()
+    {
+        return Brand::find()->all();
+    }
+
+    public function upload($imageName)
+    {
+    if ($this->validate()) {
+        $this->imageFile->saveAs('uploads/productImage/' . $imageName . '.' . $this->imageFile->extension);
+        return true;
+    } else {
+        return false;
+    }
+}
+
 }

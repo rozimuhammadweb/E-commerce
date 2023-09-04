@@ -24,6 +24,7 @@ class ProductImage extends \yii\db\ActiveRecord
         return 'product_image';
     }
 
+    public $imageFile; 
     /**
      * {@inheritdoc}
      */

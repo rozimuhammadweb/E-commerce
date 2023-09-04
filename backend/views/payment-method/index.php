@@ -31,7 +31,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'customer_id',
+            [
+                'attribute'=>'customer_id',
+                'value'=>'customer.fullName',
+                'filter'=>\yii\helpers\ArrayHelper::map(\common\models\Customer::find()->all(),'id','fullName')
+            ],
             'card_name',
             'card_number',
             'card_expire_date',

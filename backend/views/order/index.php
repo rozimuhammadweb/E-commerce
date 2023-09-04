@@ -31,9 +31,17 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'customer_id',
+            [
+                    'attribute'=>'customer_id',
+                'value'=>'customer.fullName',
+                'filter'=>\yii\helpers\ArrayHelper::map(\common\models\Customer::find()->all(),'id','fullName')
+            ],
             'ordered_at',
-            'customer_address_id',
+            [
+                'attribute'=>'customer_address_id',
+                'value'=>'customerAddress.fullAddress',
+                'filter'=>\yii\helpers\ArrayHelper::map(\common\models\CustomerAddress::find()->all(),'id','fullAddress')
+            ],
             'status',
             //'required_at',
             [
