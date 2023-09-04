@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use common\models\PrImage;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -85,11 +86,16 @@ class ProductController extends Controller
             $imageName = time();
             if ($model->save()) {
                
-                $productImage = new ProductImage();
-                $productImage->product_id = $model->id;
-                $productImage->image = $imageName . '.' . $model->imageFile->extension;
-                
-                $productImage->save();
+                $prImages = UploadedFile::getInstances($model , 'gallery');
+                foreach($prImages as $prImage){
+                    
+                    $productImage = new prImage();
+                    $productImage->product_id = $model->id;
+                    $productImage->image = $prImage . '.' . $model->imageFile->extension;
+                    $productImage->save();
+                }  
+               
+            
                 if ($model->upload($imageName)) {
                     return $this->redirect(['view', 'id' => $model->id]);
                 }
