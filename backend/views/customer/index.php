@@ -29,8 +29,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
+            
             'id',
+            [
+                'class' => 'yii\grid\DataColumn',
+                'format' => 'html', // Treat the content as HTML
+                'label' => 'Image',
+                'value' => function ($model) {
+                    if ($model->customer_image) {
+                        $imagePath = Yii::getAlias('@web/uploads/customerImage/') . $model->customer_image->filename;
+                        return Html::img($imagePath, ['width' => '80px']);
+                    } else {
+                        return Html::img('@web/uploads/customerImage/placeholder-image.jpg', ['width' => '80px']); // You can specify a placeholder image
+                    }
+                },
+            ],
             [
                     'attribute'=>'customer_user_id',
                 'value'=>'customerUser.username',

@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 
 <div class="customer-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?php $data = \yii\helpers\ArrayHelper::map(\common\models\CustomerUser::find()->all(), 'id', 'username');
     echo $form->field($model, 'customer_user_id')->dropdownList($data,
@@ -36,6 +36,7 @@ use yii\widgets\ActiveForm;
         '1'=>'ACTIVE',
         '0'=>'INACTIVE'
     ])?>
+    <?= $form->field($model, 'imageFile')->fileInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn-fill-md radius-4 text-light bg-light-sea-green']) ?>
