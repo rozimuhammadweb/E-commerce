@@ -2,7 +2,7 @@
     <div class="slider">
         <div class="home-v3-slider home-slider">
             <div class="slider-1">
-                <img src="images/slider/home-v3-img-1.png" alt="">
+                <img src="https://olcha.uz/image/original/sliders/ru/DTByGCQA4zo7rtlVo64pZvYlDO6efllHybWDdz7K821mjq2dKbf6TcknTRUJ.png" alt="">
                 <div class="caption">
                     <div class="title">The new-tech gift you are wishing for
                         <br>is right here</div>
@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="slider-1 slider-2">
-                <img src="images/slider/home-v1-img-2.png" alt="">
+                <img src="https://olcha.uz/image/original/sliders/ru/M03dO0iVIK1q9GviqCmCylnkKuF61hb9a8lfUMpU0WGGFZkrZTgq30i5r8h8.png" alt="">
                 <div class="caption">
                     <div class="title">The new-tech gift you are wishing for
                         <br>is right here</div>
