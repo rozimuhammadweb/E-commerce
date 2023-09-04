@@ -59,7 +59,7 @@ use kartik\file\FileInput;
 
     <?= $form->field($model, 'price')->textInput() ?>
 
-    <?= $form->field($model, 'imageFile')->fileInput(['multiple' => true,'accept' => 'image/*']) ?>
+    <?= $form->field($model, 'imageFile')->fileInput() ?>
 
     <?= $form->field($model, 'created_at')->textInput(['type' => 'date', 'value' => date('Y-m-d')]) ?>
 
