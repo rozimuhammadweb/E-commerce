@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\file\FileInput;
+// use kartik\widgets\FileInput;
+
 
 
 /** @var yii\web\View $this */
@@ -48,6 +50,17 @@ use kartik\file\FileInput;
     <?= $form->field($model, 'updated_at')->textInput(['type' => 'date', 'value' => date('Y-m-d')]) ?>
 
     <?= $form->field($model, 'deleted_at')->textInput(['type' => 'date', 'value' => date('Y-m-d')]) ?>
+
+    <div class="div">
+    <?php 
+        echo '<label class="control-label">Add Attachments</label>';
+        echo FileInput::widget([
+            'model' => $model,
+            'attribute' => 'gallery[]',
+            'options' => ['multiple' => true]
+        ]);
+    ?>
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn-fill-md radius-4 text-light bg-light-sea-green']) ?>
