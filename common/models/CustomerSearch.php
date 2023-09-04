@@ -41,7 +41,7 @@ class CustomerSearch extends Customer
     public function search($params)
     {
         $query = Customer::find();
-
+        $query->joinWith('customer_image');
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

@@ -76,27 +76,40 @@ class ProductController extends Controller
      * @return string|\yii\web\Response
      */
     public function actionCreate()
-    {
-        $model = new Product();
+{
+    // Create a new Product model
+    $product = new Product();
 
+    if ($product->load(\Yii::$app->request->post())) {
+        // Load the product data from the form
+        $product->imageFile = UploadedFile::getInstance($product, 'imageFile');
+        $imageName = time();
 
-        if ($model->load(\Yii::$app->request->post())) {
-            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
-            $imageName = time();
-            if ($model->save()) {
-                $productImage = new ProductImage();
-                $productImage->product_id = $model->id;
-                $productImage->image = $imageName . '.' . $model->imageFile->extension;
-                $productImage->save();
-                if ($model->upload($imageName)) {
-                    return $this->redirect(['view', 'id' => $model->id]);
+        // Validate and save the product data
+        if ($product->validate() && $product->save()) {
+            // Create a new ProductImage model
+            $productImage = new ProductImage();
+
+            // Assign the product_id to the ProductImage model
+            $productImage->product_id = $product->id; // Assign the product's ID
+
+            // Set the image attribute of the ProductImage model
+            $productImage->image = $imageName . '.' . $product->imageFile->extension;
+
+            // Validate and save the ProductImage model
+            if ($productImage->validate() && $productImage->save()) {
+                // Upload the image file
+                if ($product->upload($imageName)) {
+                    // Redirect to the product view page
+                    return $this->redirect(['view', 'id' => $product->id]);
                 }
             }
         }
-    
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+    }
+
+    return $this->render('create', [
+        'product' => $product, // Pass the Product model to the view
+    ]);
     }
 
     /**
