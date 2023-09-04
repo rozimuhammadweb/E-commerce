@@ -40,6 +40,7 @@ class Product extends \yii\db\ActiveRecord
         return 'product';
     }
 
+    public $gallery = [];
     /**
      * {@inheritdoc}
      */
