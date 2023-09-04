@@ -10,10 +10,11 @@ use kartik\file\FileInput;
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
-<div class="product-form">
+<div class="product-form card height-auto">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
+    <div class="card-body">
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
@@ -32,25 +33,6 @@ use kartik\file\FileInput;
 
     <?= $form->field($model, 'specification')->textInput() ?>
 
-
-    <?= $form->field($model, 'status',
-        [
-            'template' => '<label>Status<span class="login-danger">*</span></label>{input}',
-        ])->radioList(
-        [
-            '1' => 'Active',     // Use 10 for Active
-            '-1' => 'In Active', // Use -10 for In Active
-        ],
-        [
-            'item' => function ($index, $label, $name, $checked, $value) {
-                return Html::radio($name, $checked, [
-                    'value' => $value,
-                    'label' => '<label>' . Html::encode($label) . '</label>',
-                    'class' => 'radio-inline'
-                ]);
-            }
-        ]
-    ) ?>
 
     <?= $form->field($model, 'status')->radioList([
         '1'=>'ACTIVE',
@@ -72,5 +54,6 @@ use kartik\file\FileInput;
     </div>
 
     <?php ActiveForm::end(); ?>
+    </div>
 
 </div>
