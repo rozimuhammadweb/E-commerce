@@ -164,7 +164,7 @@ class Product extends \yii\db\ActiveRecord
     }
 
     public function upload($imageName)
-{
+    {
     if ($this->validate()) {
         $this->imageFile->saveAs('uploads/productImage/' . $imageName . '.' . $this->imageFile->extension);
         return true;

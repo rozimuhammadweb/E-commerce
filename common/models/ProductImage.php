@@ -24,9 +24,6 @@ class ProductImage extends \yii\db\ActiveRecord
         return 'product_image';
     }
 
-    public $id;
-    public $product_id;
-    public $image; // Existing property to store the image filename
     public $imageFile; 
     /**
      * {@inheritdoc}
