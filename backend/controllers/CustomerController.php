@@ -3,10 +3,12 @@
 namespace backend\controllers;
 
 use common\models\Customer;
+use common\models\CustomerImage;
 use common\models\CustomerSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * CustomerController implements the CRUD actions for Customer model.
@@ -65,22 +67,35 @@ class CustomerController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate()
-    {
-        $model = new Customer();
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+
+// ...
+
+public function actionCreate()
+{
+    $model = new Customer();
+    
+
+    if ($model->load(\Yii::$app->request->post())) {
+        $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+
+        $imageName = time();
+            if ($model->save()) {
+                $productImage = new CustomerImage();
+                $productImage->customer_id = $model->id;
+                $productImage->filename = $imageName . '.' . $model->imageFile->extension;
+                $productImage->save();
+                if ($model->upload($imageName)) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
             }
-        } else {
-            $model->loadDefaultValues();
-        }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
     }
+
+    return $this->render('create', [
+        'model' => $model,
+    ]);
+}
+
 
     /**
      * Updates an existing Customer model.

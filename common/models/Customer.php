@@ -16,7 +16,7 @@ use Yii;
  * @property string|null $birth_date
  * @property string|null $registered_at
  * @property int|null $status
- *
+ * @property int|null $customer_id
  * @property CustomerAddress[] $customerAddresses
  * @property CustomerUser $customerUser
  * @property Order[] $orders
@@ -27,10 +27,13 @@ class Customer extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public $imageFile;
     public static function tableName()
     {
         return 'customer';
     }
+
+
 
     /**
      * {@inheritdoc}
@@ -42,6 +45,9 @@ class Customer extends \yii\db\ActiveRecord
             [['birth_date', 'registered_at'], 'safe'],
             ['status', 'in', 'range' => [1, -1]],
             [['first_name', 'last_name', 'middle_name', 'gender'], 'string', 'max' => 255],
+            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
+            [['customer_image'], 'exist', 'skipOnError' => true, 'targetClass' => CustomerImage::class, 'targetAttribute' => ['customer_id' => 'id']],
+
             [['customer_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => CustomerUser::class, 'targetAttribute' => ['customer_user_id' => 'id']],
         ];
     }
@@ -99,9 +105,13 @@ class Customer extends \yii\db\ActiveRecord
      */
     public function getOrders()
     {
-        return $this->hasMany(Order::class, ['customer_id' => 'id']);
+        return $this->hasMany(Order::class, ['id' => 'customer_id']);
     }
 
+    public function getCustomer_image(){
+        return $this->hasOne(CustomerImage::class,['customer_id'=>'id']);
+    }
+    
     /**
      * Gets query for [[PaymentMethods]].
      *
@@ -110,5 +120,15 @@ class Customer extends \yii\db\ActiveRecord
     public function getPaymentMethods()
     {
         return $this->hasMany(PaymentMethod::class, ['customer_id' => 'id']);
+    }
+
+    public function upload($imageName)
+    {
+        if ($this->validate($imageName)) {
+            $this->imageFile->saveAs('uploads/customerImage/' . $imageName . '.' . $this->imageFile->extension);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
