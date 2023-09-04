@@ -2,7 +2,7 @@
     <div class="slider">
         <div class="home-v3-slider home-slider">
             <div class="slider-1">
-                <img src="https://olcha.uz/image/original/sliders/ru/DTByGCQA4zo7rtlVo64pZvYlDO6efllHybWDdz7K821mjq2dKbf6TcknTRUJ.png" alt="">
+                <img src="https://olcha.uz/image/original/sliders/git ru/DTByGCQA4zo7rtlVo64pZvYlDO6efllHybWDdz7K821mjq2dKbf6TcknTRUJ.png" alt="">
                 <div class="caption">
                     <div class="title">The new-tech gift you are wishing for
                         <br>is right here</div>
