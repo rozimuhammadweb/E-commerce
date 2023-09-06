@@ -10,6 +10,7 @@ $this->title = 'Update Product: ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
+
 ?>
 
 <div class="product-update">
@@ -53,16 +54,9 @@ echo $form->field($model, 'brand_id')->dropdownList($data,
     <!-- Other product attributes and fields -->
 
     <!-- Display and manage related product images -->
-    <?php foreach ($productImages as $index=>$productImage): ?>
-    <div class="form-group">
-        <?= Html::label('Product Image ' . ($index + 1)) ?>
-        <img style="width: 100px;" src="<?= Yii::getAlias('@web') ?>/uploads/productImage/<?= $productImage->image ?>">
-        <?= Html::a('Delete', ['delete-image', 'id' => $productImage->product_id], ['class' => 'btn btn-danger']) ?>
-    </div>
-<?php endforeach; ?>
+ 
 
     <!-- Add a new product image input field (if needed) -->
-    <?= $form->field($newProductImage, 'imageFile')->fileInput(['accept' => 'image/*']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Update', ['class' => 'btn btn-primary']) ?>
