@@ -75,7 +75,6 @@ class Product extends \yii\db\ActiveRecord
             'specification' => 'Specification',
             'status' => 'Status',
             'price' => 'Price',
-            
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'deleted_at' => 'Deleted At',

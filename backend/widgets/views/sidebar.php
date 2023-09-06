@@ -31,6 +31,9 @@
                     <li class="nav-item">
                         <a href="<?=\yii\helpers\Url::to(['/brand/index'])?>" class="nav-link"><i class="fas fa-angle-right"></i>Brand</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="<?=\yii\helpers\Url::to(['/banner/'])?>" class="nav-link"><i class="fas fa-angle-right"></i>Banner</a>
+                    </li>
 
                 </ul>
             </li>

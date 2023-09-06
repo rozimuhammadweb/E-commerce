@@ -36,12 +36,13 @@ use kartik\file\FileInput;
     <?= $form->field($model, 'specification')->textInput() ?>
 
 
-    <?= $form->field($model, 'status')->radioList([
-        '1'=>'ACTIVE',
-        '0'=>'INACTIVE'
-    ])?>
+        <?= $form->field($model, 'status')->radioList([
+            '1' => 'ACTIVE',
+            '0' => 'INACTIVE'
+        ])->label(false) ?>
 
-    <?= $form->field($model, 'price')->textInput() ?>
+
+        <?= $form->field($model, 'price')->textInput() ?>
 
     <?= $form->field($model, 'imageFile')->fileInput() ?>
 
