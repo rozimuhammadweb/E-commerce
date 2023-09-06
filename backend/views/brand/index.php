@@ -6,6 +6,7 @@ use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+
 /** @var yii\web\View $this */
 /** @var common\models\BrandSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
@@ -13,7 +14,7 @@ use yii\widgets\Pjax;
 $this->title = 'Brands';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="brand-index">
+<div class="card height-auto">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -23,26 +24,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <div class="card-body">
+        <?= GridView::widget(['dataProvider' => $dataProvider, 'filterModel' => $searchModel, 'columns' => [['class' => 'yii\grid\SerialColumn'],
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            'id', 'name', 'logo', 'short_name', ['class' => ActionColumn::className(), 'urlCreator' => function ($action, Brand $model, $key, $index, $column) {
+                return Url::toRoute([$action, 'id' => $model->id]);
+            }],],]); ?>
 
-            'id',
-            'name',
-            'logo',
-            'short_name',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Brand $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
-            ],
-        ],
-    ]); ?>
+        <?php Pjax::end(); ?>
 
-    <?php Pjax::end(); ?>
-
+    </div>
 </div>

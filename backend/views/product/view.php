@@ -36,7 +36,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'brand_id',
             'SKU',
             'specification',
-            'status',
+            [
+                'attribute' => 'status',
+                'value' => function($model) {
+                    return $model->status == -1 ? 'In Active' : 'Active';
+                }
+            ],
             'price',
             'created_at',
             'updated_at',

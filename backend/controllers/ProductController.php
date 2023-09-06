@@ -64,13 +64,13 @@ class ProductController extends Controller
         if ($model === null) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
-    
+
         return $this->render('view', [
             'model' => $model,
 
         ]);
     }
-    
+
 
     /**
      * Creates a new Product model.
@@ -83,27 +83,27 @@ class ProductController extends Controller
 
 
         if ($model->load(\Yii::$app->request->post())) {
-            
+
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             $imageName = time();
             if ($model->save()) {
-               
-                $prImages = UploadedFile::getInstances($model , 'gallery');
-                foreach($prImages as $prImage){
-                    
+
+                $prImages = UploadedFile::getInstances($model, 'gallery');
+                foreach ($prImages as $prImage) {
+
                     $productImage = new prImage();
                     $productImage->product_id = $model->id;
                     $productImage->image = $prImage . '.' . $model->imageFile->extension;
                     $productImage->save();
-                }  
-               
-            
+                }
+
+
                 if ($model->upload($imageName)) {
                     return $this->redirect(['view', 'id' => $model->id]);
                 }
             }
         }
-    
+
         return $this->render('create', [
             'model' => $model,
             'primage'=> $prImage,
@@ -118,71 +118,52 @@ class ProductController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
-    {
-        $model = Product::findOne($id);
+{
+    $model = Product::findOne($id);
 
-        if ($model === null) {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-
-        $prImage = new PrImage(); // Create a new PrImage model
-
-        if ($model->load(\Yii::$app->request->post())) {
-            $imageName = time();
-
-            if ($model->validate() && $model->save()) {
-                $this->handleGalleryImages($model, $imageName);
-
-                if ($model->imageFile !== null) {
-                    if ($model->upload($imageName)) {
-                        return $this->redirect(['view', 'id' => $model->id]);
-                    }
-                } else {
-                    return $this->redirect(['view', 'id' => $model->id]);
-                }
-            }
-        }
-
-        return $this->render('update', [
-            'model' => $model,
-            'prImage' => $prImage,
-        ]);
+    if ($model === null) {
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    private function handleGalleryImages($model, $imageName)
-    {
-        $prImages = UploadedFile::getInstances($model, 'gallery');
+    // Load the related product images
+    $productImages = $model->getProductImages()->all();
+    $newProductImage = new ProductImage();
 
-        foreach ($prImages as $prImage) {
-            $productImage = new prImage();
-            $productImage->product_id = $model->id;
-            $productImage->image = $imageName . '.' . $prImage->extension;
-            $productImage->save();
 
-            // Save the gallery image to a directory
-            $prImage->saveAs(\Yii::getAlias('@webroot/uploads/') . $productImage->image);
-        }
+    if ($model->load(\Yii::$app->request->post()) && $model->save()) {
+        // Handle related product images update or deletion here
+        // Example: You can add code here to manage product images
+
+        \Yii::$app->session->setFlash('success', 'Product updated successfully.');
+        return $this->redirect(['view', 'id' => $model->id]);
     }
+
+    return $this->render('update', [
+        'model' => $model,
+        'productImages' => $productImages, // Pass related images to the view
+        'newProductImage' => $newProductImage, // Define and assign $newProductImage
+
+    ]);
+}
 
 public function actionDeleteImage($id)
 {
     $productImage = ProductImage::findOne($id);
 
-    if ($productImage === null) {
-        throw new NotFoundHttpException('The requested image does not exist.');
+        if ($productImage === null) {
+            throw new NotFoundHttpException('The requested image does not exist.');
+        }
+
+        // Delete the image file from the server
+        $imagePath = \Yii::getAlias('@webroot/uploads/productImage/') . $productImage->image;
+
+        if (unlink($imagePath)) {
+            // Delete the image record from the database
+            $productImage->delete();
+        }
+
+        return $this->redirect(['update', 'id' => $productImage->product_id]);
     }
-
-    // Delete the image file from the server
-    $imagePath = \Yii::getAlias('@webroot/uploads/productImage/') . $productImage->image;
-    
-    if (unlink($imagePath)) {
-        // Delete the image record from the database
-        $productImage->delete();
-    }
-
-    return $this->redirect(['update', 'id' => $productImage->product_id]);
-}
-
 
 
     /**

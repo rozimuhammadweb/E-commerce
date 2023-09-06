@@ -16,7 +16,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status')->radioList([
+        '1'=>'ACTIVE',
+        '0'=>'INACTIVE'
+    ])?>
 
     <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
 

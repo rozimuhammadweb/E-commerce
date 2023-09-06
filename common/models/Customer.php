@@ -43,6 +43,7 @@ class Customer extends \yii\db\ActiveRecord
         return [
             [['customer_user_id', 'status'], 'integer'],
             [['birth_date', 'registered_at'], 'safe'],
+            ['status', 'in', 'range' => [1, -1]],
             [['first_name', 'last_name', 'middle_name', 'gender'], 'string', 'max' => 255],
             [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
             [['customer_image'], 'exist', 'skipOnError' => true, 'targetClass' => CustomerImage::class, 'targetAttribute' => ['customer_id' => 'id']],

@@ -10,6 +10,7 @@
                     <div class="button">Browse now
                         <i class="tm tm-long-arrow-right"></i>
                     </div>
+
                     <div class="bottom-caption">Free shipping on US Terority</div>
                 </div>
             </div>
