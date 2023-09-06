@@ -27,7 +27,6 @@ use Yii;
  * @property OrderDetail[] $orderDetails
  * @property Order[] $orders
  * @property ProductImage $productImage
- * @property string|null $slug
  */
 class Product extends \yii\db\ActiveRecord
 {
@@ -55,7 +54,7 @@ class Product extends \yii\db\ActiveRecord
             [['specification', 'created_at', 'updated_at', 'deleted_at'], 'safe'],
             [['title', 'SKU'], 'string', 'max' => 255],
             [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
-
+            [['slug'],'string','max'=>300],
             [['brand_id'], 'exist', 'skipOnError' => true, 'targetClass' => Brand::class, 'targetAttribute' => ['brand_id' => 'id']],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['category_id' => 'id']],
 

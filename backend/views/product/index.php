@@ -53,7 +53,6 @@ Breadcrumbs::widget([
             ],
 //            'brand_id',
             'SKU',
-            'specification',
             //'status',
             'price',
             //'created_at',
