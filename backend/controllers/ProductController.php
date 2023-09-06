@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use common\models\Product;
+use common\models\ProductChar;
 use common\models\ProductImage;
 use common\models\ProductSearch;
 use yii\web\Controller;
@@ -79,9 +80,11 @@ class ProductController extends Controller
     public function actionCreate()
     {
         $model = new Product();
+        $chars = [new ProductChar()];
 
 
         if ($model->load(\Yii::$app->request->post())) {
+            
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             $imageName = time();
             if ($model->save()) {
