@@ -29,12 +29,32 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'PID',
             'name',
-            'status',
-            'image',
+            [
+                'attribute' => 'status',
+                'format' => 'raw', // because we're returning HTML content
+                'value' => function ($model) {
+                    if ($model->status == 0) {
+                        return Html::tag('span', 'Faol emas', ['class' => 'label text-danger']);
+                    } else {
+                        return Html::tag('span', 'Faol', ['class' => 'label text-success']);
+                    }
+                },
+            ],
+            [
+                'class' => 'yii\grid\DataColumn',
+                'format' => 'html',
+                'label' => 'Image',
+                'value' => function ($model) {
+                    if ($model->image) {
+                        $imagePath = Yii::getAlias('@web/uploads/CategoryImage/') . $model->image;
+                        return Html::img($imagePath, ['width' => '80px']);
+                    } else {
+                        return Html::img('@web/uploads/BannerImage/placeholder-image.jpg', ['width' => '80px']);
+                    }
+                },
+            ],
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Category $model, $key, $index, $column) {

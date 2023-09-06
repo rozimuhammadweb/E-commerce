@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\Banner;
 use common\models\Brand;
 use common\models\BrandSearch;
 use common\models\ProductImage;
@@ -70,25 +71,20 @@ class BrandController extends Controller
     public function actionCreate()
     {
         $model = new Brand();
-
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
-                $imageName = time();
-                $model->logo = $imageName.'.'.$model->imageFile->extension;
-                $model->save();
-                if ($model->upload($imageName)){
-                    return $this->redirect(['view', 'id' => $model->id]);
-                }
-
+            $model->load(\Yii::$app->request->post());
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            $imageName = md5(time());
+            $model->logo = $imageName . "." . $model->imageFile->extension;
+            if ($model->save()) {
+                $model->upload($imageName);
+                return $this->redirect(['index']);
+            } else {
+                print_r($model->getErrors());
+                die();
             }
-        } else {
-            $model->loadDefaultValues();
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        return $this->render('create', ['model' => $model]);
     }
 
     /**
@@ -102,13 +98,29 @@ class BrandController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost) {
+            $model->load(\Yii::$app->request->post());
+
+            // Check for a new uploaded file
+            $uploadedFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($uploadedFile !== null) {
+                $model->imageFile = $uploadedFile;
+                $imageName = md5(time());
+                $model->logo = $imageName . "." . $model->imageFile->extension;
+            }
+
+            if ($model->save()) {
+                if ($model->imageFile) {
+                    $model->upload($imageName);
+                }
+                return $this->redirect(['index']);
+            } else {
+                print_r($model->getErrors());
+                die();
+            }
         }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        return $this->render('update', ['model' => $model]);
     }
 
     /**
