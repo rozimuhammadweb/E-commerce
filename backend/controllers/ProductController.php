@@ -87,11 +87,9 @@ class ProductController extends Controller
 
         if ($model->load(\Yii::$app->request->post())) {
 
-            //product chars
             $chars = CommonModels::createMultiple(ProductChar::classname());
             CommonModels::loadMultiple($chars, \Yii::$app->request->post());
 
-            // validate all models
             $valid = $model->validate();
             $valid = CommonModels::validateMultiple($chars) && $valid;
 
@@ -115,10 +113,9 @@ class ProductController extends Controller
                 }
             }
 
-            //upload image
             $image = UploadedFile::getInstance($model , 'image');
             if ($image){
-                $model->image = StaticFunctions::saveImage($image , $model->id , 'product');
+                $model->productImage->image = StaticFunctions::saveImage($image , $model->id , 'product');
             }
             $model->slug = StaticFunctions::generateSlug($model->title);
             $model->save();
