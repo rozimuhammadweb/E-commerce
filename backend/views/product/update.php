@@ -44,25 +44,17 @@ echo $form->field($model, 'brand_id')->dropdownList($data,
 <?= $form->field($model, 'price')->textInput() ?>
 
 
-<?= $form->field($model, 'created_at')->textInput(['type' => 'date', 'value' => date('Y-m-d')]) ?>
 
 <?= $form->field($model, 'updated_at')->textInput(['type' => 'date', 'value' => date('Y-m-d')]) ?>
 
-<?= $form->field($model, 'deleted_at')->textInput(['type' => 'date', 'value' => date('Y-m-d')]) ?>
+    <!-- Main Product Image -->
+    <?= $form->field($model, 'imageFile')->fileInput() ?>
+    <?php if ($model->getProductImage()): ?>
+        <p>Current Main Image:</p>
+        <img src="<?= Yii::getAlias('@web/uploads/productImage/') . $model->imageFile ?>" alt="Main Product Image" class="img-thumbnail" />
+    <?php endif; ?>
 
-    <!-- Other product attributes and fields -->
 
-    <!-- Display and manage related product images -->
-    <?php foreach ($productImages as $index=>$productImage): ?>
-    <div class="form-group">
-        <?= Html::label('Product Image ' . ($index + 1)) ?>
-        <img style="width: 100px;" src="<?= Yii::getAlias('@web') ?>/uploads/productImage/<?= $productImage->image ?>">
-        <?= Html::a('Delete', ['delete-image', 'id' => $productImage->product_id], ['class' => 'btn btn-danger']) ?>
-    </div>
-<?php endforeach; ?>
-
-    <!-- Add a new product image input field (if needed) -->
-    <?= $form->field($newProductImage, 'imageFile')->fileInput(['accept' => 'image/*']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Update', ['class' => 'btn btn-primary']) ?>

@@ -80,7 +80,6 @@ class ProductController extends Controller
     public function actionCreate()
     {
         $model = new Product();
-        $chars = [new ProductChar()];
 
 
         if ($model->load(\Yii::$app->request->post())) {
@@ -107,6 +106,7 @@ class ProductController extends Controller
     
         return $this->render('create', [
             'model' => $model,
+            'primage'=> $prImage,
         ]);
     }
 
@@ -118,33 +118,51 @@ class ProductController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
-{
-    $model = Product::findOne($id);
+    {
+        $model = Product::findOne($id);
 
-    if ($model === null) {
-        throw new NotFoundHttpException('The requested page does not exist.');
+        if ($model === null) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        $prImage = new PrImage(); // Create a new PrImage model
+
+        if ($model->load(\Yii::$app->request->post())) {
+            $imageName = time();
+
+            if ($model->validate() && $model->save()) {
+                $this->handleGalleryImages($model, $imageName);
+
+                if ($model->imageFile !== null) {
+                    if ($model->upload($imageName)) {
+                        return $this->redirect(['view', 'id' => $model->id]);
+                    }
+                } else {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+            }
+        }
+
+        return $this->render('update', [
+            'model' => $model,
+            'prImage' => $prImage,
+        ]);
     }
 
-    // Load the related product images
-    $productImages = $model->getProductImages()->all();
-    $newProductImage = new ProductImage();
+    private function handleGalleryImages($model, $imageName)
+    {
+        $prImages = UploadedFile::getInstances($model, 'gallery');
 
+        foreach ($prImages as $prImage) {
+            $productImage = new prImage();
+            $productImage->product_id = $model->id;
+            $productImage->image = $imageName . '.' . $prImage->extension;
+            $productImage->save();
 
-    if ($model->load(\Yii::$app->request->post()) && $model->save()) {
-        // Handle related product images update or deletion here
-        // Example: You can add code here to manage product images
-
-        \Yii::$app->session->setFlash('success', 'Product updated successfully.');
-        return $this->redirect(['view', 'id' => $model->id]);
+            // Save the gallery image to a directory
+            $prImage->saveAs(\Yii::getAlias('@webroot/uploads/') . $productImage->image);
+        }
     }
-
-    return $this->render('update', [
-        'model' => $model,
-        'productImages' => $productImages, // Pass related images to the view
-        'newProductImage' => $newProductImage, // Define and assign $newProductImage
-
-    ]);
-}
 
 public function actionDeleteImage($id)
 {

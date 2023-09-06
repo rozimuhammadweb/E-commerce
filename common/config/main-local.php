@@ -6,7 +6,7 @@ return [
             'class' => \yii\db\Connection::class,
             'dsn' => 'mysql:host=localhost;dbname=onlinestore',
             'username' => 'root',
-            'password' => '',
+            'password' => 'king2559',
             'charset' => 'utf8',
         ],
         'mailer' => [
