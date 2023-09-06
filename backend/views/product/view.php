@@ -1,5 +1,6 @@
 <?php
 
+use yii\bootstrap5\Breadcrumbs;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -12,6 +13,14 @@ $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="product-view">
+<div class="row">
+
+<h2><?= Html::encode($this->title) ?></h2>
+<?=
+Breadcrumbs::widget([
+    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+])
+?>
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -49,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
-</div>
+</div></div>
 
 
 

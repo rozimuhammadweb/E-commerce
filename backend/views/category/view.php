@@ -12,6 +12,12 @@ $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="category-view">
+<div class="row">
+<?=
+\yii\bootstrap5\Breadcrumbs::widget([
+    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+])
+?>
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -42,4 +48,4 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
-</div>
+</div></div>

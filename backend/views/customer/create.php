@@ -9,6 +9,12 @@ $this->title = 'Create Customer';
 $this->params['breadcrumbs'][] = ['label' => 'Customers', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+    <div class="row">
+<?=
+\yii\bootstrap5\Breadcrumbs::widget([
+    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+])
+?>
 <div class="customer-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -17,4 +23,4 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
     ]) ?>
 
-</div>
+</div></div>
