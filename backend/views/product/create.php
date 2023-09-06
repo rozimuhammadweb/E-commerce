@@ -1,6 +1,7 @@
 <?php
 
 use common\models\ProductChar;
+use yii\bootstrap5\Breadcrumbs;
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
