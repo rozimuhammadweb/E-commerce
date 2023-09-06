@@ -118,7 +118,7 @@ class ProductController extends Controller
             //upload image
             $image = UploadedFile::getInstance($model , 'image');
             if ($image){
-                $model->image = StaticFunctions::saveImage($image , $model->id , 'product');
+                $model->imageFile = StaticFunctions::saveImage($image , $model->id , 'product');
             }
             $model->slug = StaticFunctions::generateSlug($model->title);
             $model->save();
@@ -158,7 +158,7 @@ class ProductController extends Controller
     public function actionUpdate($id)
 {
     $model = Product::findOne($id);
-
+    $oldImage = $model->imageFile;
     if ($model === null) {
         throw new NotFoundHttpException('The requested page does not exist.');
     }
