@@ -57,7 +57,6 @@ class Product extends \yii\db\ActiveRecord
 
             [['brand_id'], 'exist', 'skipOnError' => true, 'targetClass' => Brand::class, 'targetAttribute' => ['brand_id' => 'id']],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['category_id' => 'id']],
-            [['slug'], 'string', 'max' => 300],
 
         ];
     }
