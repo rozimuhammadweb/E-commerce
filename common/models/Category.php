@@ -32,6 +32,7 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             [['PID', 'status'], 'integer'],
+            ['status', 'in', 'range' => [1, -1]],
             [['name', 'image'], 'string', 'max' => 255],
         ];
     }

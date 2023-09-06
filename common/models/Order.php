@@ -37,6 +37,7 @@ class Order extends \yii\db\ActiveRecord
     {
         return [
             [['customer_id', 'customer_address_id', 'status'], 'integer'],
+            ['status', 'in', 'range' => [1, -1]],
             [['ordered_at', 'required_at'], 'safe'],
             [['customer_id'], 'exist', 'skipOnError' => true, 'targetClass' => Customer::class, 'targetAttribute' => ['customer_id' => 'id']],
             [['customer_address_id'], 'exist', 'skipOnError' => true, 'targetClass' => CustomerAddress::class, 'targetAttribute' => ['customer_address_id' => 'id']],

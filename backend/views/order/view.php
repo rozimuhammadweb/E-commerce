@@ -33,7 +33,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'customer_id',
             'ordered_at',
             'customer_address_id',
-            'status',
+            [
+                'attribute' => 'status',
+                'value' => function($model) {
+                    return $model->status == -1 ? 'In Active' : 'Active';
+                }
+            ],
             'required_at',
         ],
     ]) ?>

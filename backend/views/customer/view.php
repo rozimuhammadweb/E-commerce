@@ -37,7 +37,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'gender',
             'birth_date',
             'registered_at',
-            'status',
+            [
+                'attribute' => 'status',
+                'value' => function($model) {
+                    return $model->status == -1 ? 'In Active' : 'Active';
+                }
+            ],
         ],
     ]) ?>
 
