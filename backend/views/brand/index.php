@@ -6,6 +6,9 @@ use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use yii\bootstrap5\Breadcrumbs;
+
+
 /** @var yii\web\View $this */
 /** @var common\models\BrandSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
@@ -22,9 +25,16 @@ $this->params['breadcrumbs'][] = $this->title;
 ])
 
 ?>
-<div class="brand-index">
+<div class="card height-auto">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="row">
+
+<h2><?= Html::encode($this->title) ?></h2>
+<?=
+Breadcrumbs::widget([
+    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+])
+?>
 
     <p>
         <?= Html::a('Create Brand', ['create'], ['class' => 'btn-fill-md radius-4 text-light bg-light-sea-green']) ?>
@@ -33,26 +43,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <div class="card-body">
+        <?= GridView::widget(['dataProvider' => $dataProvider, 'filterModel' => $searchModel, 'columns' => [['class' => 'yii\grid\SerialColumn'],
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            'id', 'name', 'logo', 'short_name', ['class' => ActionColumn::className(), 'urlCreator' => function ($action, Brand $model, $key, $index, $column) {
+                return Url::toRoute([$action, 'id' => $model->id]);
+            }],],]); ?>
 
-            'id',
-            'name',
-            'logo',
-            'short_name',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Brand $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
-            ],
-        ],
-    ]); ?>
+        <?php Pjax::end(); ?>
 
-    <?php Pjax::end(); ?>
-
+    </div>
+    </div>
 </div>

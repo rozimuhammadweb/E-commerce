@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\Banner;
 use common\models\Category;
 use common\models\CategorySearch;
 use yii\web\Controller;
@@ -69,25 +70,20 @@ class CategoryController extends Controller
     public function actionCreate()
     {
         $model = new Category();
-
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
-                $imageName = time();
-                $image = new Category();
-                $image->image = $imageName.'.'.$model->imageFile->extension;
-                $image->save();
-                if ($model->upload()){
-                    return $this->redirect(['view', 'id' => $model->id]);
-                }
+            $model->load(\Yii::$app->request->post());
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            $imageName = md5(time());
+            $model->image = $imageName . "." . $model->imageFile->extension;
+            if ($model->save()) {
+                $model->upload($imageName);
+                return $this->redirect(['index']);
+            } else {
+                print_r($model->getErrors());
+                die();
             }
-        } else {
-            $model->loadDefaultValues();
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        return $this->render('create', ['model' => $model]);
     }
 
     /**
@@ -101,13 +97,29 @@ class CategoryController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost) {
+            $model->load(\Yii::$app->request->post());
+
+            // Check for a new uploaded file
+            $uploadedFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($uploadedFile !== null) {
+                $model->imageFile = $uploadedFile;
+                $imageName = md5(time());
+                $model->image = $imageName . "." . $model->imageFile->extension;
+            }
+
+            if ($model->save()) {
+                if ($model->imageFile) {
+                    $model->upload($imageName);
+                }
+                return $this->redirect(['index']);
+            } else {
+                print_r($model->getErrors());
+                die();
+            }
         }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        return $this->render('update', ['model' => $model]);
     }
 
     /**
