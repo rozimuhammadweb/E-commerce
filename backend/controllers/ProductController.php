@@ -4,18 +4,15 @@ namespace backend\controllers;
 
 use backend\models\CommonModels;
 use common\components\StaticFunctions;
-use common\models\PrImage;
 use common\models\Product;
 use common\models\ProductChar;
 use common\models\ProductImage;
 use common\models\ProductSearch;
-use Exception;
-use Yii;
-use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use common\models\PrImage;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -64,10 +61,18 @@ class ProductController extends Controller
      */
     public function actionView($id)
     {
+        $model = Product::findOne($id);
+
+        if ($model === null) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+
         ]);
     }
+    
 
     /**
      * Creates a new Product model.
@@ -76,74 +81,67 @@ class ProductController extends Controller
      */
     public function actionCreate()
     {
-
         $model = new Product();
         $chars = [new ProductChar()];
 
-        if ($this->request->isPost) {
 
-            if ($model->load($this->request->post())) {
+        if ($model->load(\Yii::$app->request->post())) {
 
-                //product chars
-                $chars = CommonModels::createMultiple(ProductChar::classname());
-                CommonModels::loadMultiple($chars, Yii::$app->request->post());
+            //product chars
+            $chars = CommonModels::createMultiple(ProductChar::classname());
+            CommonModels::loadMultiple($chars, \Yii::$app->request->post());
 
-                    // validate all models
-                $valid = $model->validate();
-                $valid = CommonModels::validateMultiple($chars) && $valid;
+            // validate all models
+            $valid = $model->validate();
+            $valid = CommonModels::validateMultiple($chars) && $valid;
 
-                if ($valid) {
-                    $transaction = \Yii::$app->db->beginTransaction();
-                    try {
-                        if ($flag = $model->save(false)) {
-                            foreach ($chars as $char) {
-                                $char->product_id = $model->id;
-                                if (! ($flag = $char->save(false))) {
-                                    $transaction->rollBack();
-                                    break;
-                                }
+            if ($valid) {
+                $transaction = \Yii::$app->db->beginTransaction();
+                try {
+                    if ($flag = $model->save(false)) {
+                        foreach ($chars as $char) {
+                            $char->product_id = $model->id;
+                            if (! ($flag = $char->save(false))) {
+                                $transaction->rollBack();
+                                break;
                             }
                         }
-                        if ($flag) {
-                            $transaction->commit();
-                        }
-                    } catch (Exception $e) {
-                        $transaction->rollBack();
                     }
+                    if ($flag) {
+                        $transaction->commit();
+                    }
+                } catch (\Exception $e) {
+                    $transaction->rollBack();
                 }
+            }
 
-                #Upload image
-                $image = UploadedFile::getInstance($model , 'image');
-                if($image){
-                    $model->image = StaticFunctions::saveImage($image , $model->id , 'product');
-                    $model->save();
-                }
-
-                #Upload product images
+            //upload image
+            $image = UploadedFile::getInstance($model , 'image');
+            if ($image){
+                $model->image = StaticFunctions::saveImage($image , $model->id , 'product');
+            }
+            $model->slug = StaticFunctions::generateSlug($model->title);
+            $model->save();
+            
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            $imageName = time();
+            if ($model->save()) {
+               
                 $prImages = UploadedFile::getInstances($model , 'gallery');
-
-                if (!empty($prImages)){
-                    foreach ($prImages as $prImage){
-                        $productImage = new PrImage();
-                        $productImage->product_id = $model->id;
-                        $fileName = StaticFunctions::saveImage($prImage , $model->id , 'product-images');
-                        $productImage->image = $fileName;
-                        $productImage->save();
-                    }
+                foreach($prImages as $prImage){
+                    
+                    $productImage = new prImage();
+                    $productImage->product_id = $model->id;
+                    $productImage->image = $prImage . '.' . $model->imageFile->extension;
+                    $productImage->save();
                 }
-                if ($model->save()){
+
+                if ($model->upload($imageName)) {
                     return $this->redirect(['view', 'id' => $model->id]);
                 }
-
-
-                $model->slug = StaticFunctions::generateSlug($model->title);
-                $model->save();
-
             }
-        } else {
-            $model->loadDefaultValues();
         }
-
+    
         return $this->render('create', [
             'model' => $model,
             'chars' => (empty($chars)) ? [new ProductChar()] : $chars,
@@ -158,80 +156,54 @@ class ProductController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-        $chars = ProductChar::find()->where(['product_id'=>$id])->all();
-        $prImages = PrImage::find()->where(['product_id' => $id])->all();
-        $oldImage = $model->image;
+{
+    $model = Product::findOne($id);
 
-        if ($this->request->isPost && $model->load($this->request->post())) {
-
-            $oldIDs = ArrayHelper::map($chars, 'id', 'id');
-            $chars = CommonModels::createMultiple(ProductChar::classname(), $chars);
-            CommonModels::loadMultiple($chars, Yii::$app->request->post());
-            $deletedIDs = array_diff($oldIDs, array_filter(ArrayHelper::map($chars, 'id', 'id')));
-
-            // validate all models
-            $valid = $model->validate();
-            $valid = CommonModels::validateMultiple($chars) && $valid;
-
-            if ($valid) {
-                $transaction = \Yii::$app->db->beginTransaction();
-                try {
-                    if ($flag = $model->save(false)) {
-                        if (! empty($deletedIDs)) {
-                            ProductChar::deleteAll(['id' => $deletedIDs]);
-                        }
-                        foreach ($chars as $char) {
-                            $char->product_id = $model->id;
-                            if (! ($flag = $char->save(false))) {
-                                $transaction->rollBack();
-                                break;
-                            }
-                        }
-                    }
-                    if ($flag) {
-                        $transaction->commit();
-                    }
-                } catch (Exception $e) {
-                    $transaction->rollBack();
-                }
-            }
-
-            #Upload image
-            $image = UploadedFile::getInstance($model , 'image');
-            if($image){
-                $model->image = StaticFunctions::saveImage($image , $model->id , 'product');
-                StaticFunctions::deleteImage($oldImage , $model->id , 'product');
-            }else{
-                $model->image = $oldImage;
-            }
-
-            #Upload product images
-            $prImages = UploadedFile::getInstances($model , 'gallery');
-            if (!empty($prImages)){
-                foreach ($prImages as $prImage){
-                    $productImage = new PrImage();
-                    $productImage->product_id = $model->id;
-                    $fileName = StaticFunctions::saveImage($prImage , $model->id , 'product-images');
-                    $productImage->image = $fileName;
-                    $productImage->save();
-                }
-            }
-
-            $model->slug = StaticFunctions::generateSlug($model->title);
-            if ($model->save()){
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-
-        }
-
-        return $this->render('update', [
-            'model' => $model,
-            'chars' => (empty($chars)) ? [new ProductChar()] : $chars,
-            'prImages' => $prImages,
-        ]);
+    if ($model === null) {
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    // Load the related product images
+    $productImages = $model->getProductImages()->all();
+    $newProductImage = new ProductImage();
+
+
+    if ($model->load(\Yii::$app->request->post()) && $model->save()) {
+        // Handle related product images update or deletion here
+        // Example: You can add code here to manage product images
+
+        \Yii::$app->session->setFlash('success', 'Product updated successfully.');
+        return $this->redirect(['view', 'id' => $model->id]);
+    }
+
+    return $this->render('update', [
+        'model' => $model,
+        'productImages' => $productImages, // Pass related images to the view
+        'newProductImage' => $newProductImage, // Define and assign $newProductImage
+
+    ]);
+}
+
+public function actionDeleteImage($id)
+{
+    $productImage = ProductImage::findOne($id);
+
+    if ($productImage === null) {
+        throw new NotFoundHttpException('The requested image does not exist.');
+    }
+
+    // Delete the image file from the server
+    $imagePath = \Yii::getAlias('@webroot/uploads/productImage/') . $productImage->image;
+    
+    if (unlink($imagePath)) {
+        // Delete the image record from the database
+        $productImage->delete();
+    }
+
+    return $this->redirect(['update', 'id' => $productImage->product_id]);
+}
+
+
 
     /**
      * Deletes an existing Product model.
@@ -261,12 +233,5 @@ class ProductController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
-    }
-
-    public function actionDelItem($id)
-    {
-        $model = PrImage::findOne($id);
-        $model->delete();
-        return $this->redirect(['/product/update' , 'id' => $model->product_id]);
     }
 }
