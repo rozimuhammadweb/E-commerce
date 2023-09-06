@@ -17,11 +17,12 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->radioList([
-        '1'=>'ACTIVE',
-        '0'=>'INACTIVE'
+        '1'=>'Faol',
+        '0'=>'Faol emas'
     ])?>
 
-    <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'imageFile')->fileInput(['multiple' => true,'accept' => 'image/*']) ?>
+
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn-fill-md radius-4 text-light bg-light-sea-green']) ?>

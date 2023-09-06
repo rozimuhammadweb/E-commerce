@@ -20,6 +20,7 @@ class Category extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public $imageFile;
     public static function tableName()
     {
         return 'category';
@@ -32,8 +33,10 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             [['PID', 'status'], 'integer'],
-            ['status', 'in', 'range' => [1, -1]],
+            ['status', 'in', 'range' => [1, 0]],
             [['name', 'image'], 'string', 'max' => 255],
+            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
+
         ];
     }
 
@@ -59,5 +62,18 @@ class Category extends \yii\db\ActiveRecord
     public function getProducts()
     {
         return $this->hasMany(Product::class, ['category_id' => 'id']);
+    }
+
+    public function upload($imageName)
+    {
+        if ($this->validate()) {
+            $uploadPath = 'uploads/CategoryImage/';
+            if (!is_dir($uploadPath)) {
+                mkdir($uploadPath, 0777, true);
+            }
+            $this->imageFile->saveAs($uploadPath . $imageName . '.' . $this->imageFile->extension);
+            return true;
+        }
+        return false;
     }
 }
