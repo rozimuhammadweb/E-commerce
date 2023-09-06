@@ -2,13 +2,17 @@
 
 namespace backend\controllers;
 
+use backend\models\CommonModels;
+use common\components\StaticFunctions;
 use common\models\Product;
+use common\models\ProductChar;
 use common\models\ProductImage;
 use common\models\ProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use common\models\PrImage;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -78,18 +82,60 @@ class ProductController extends Controller
     public function actionCreate()
     {
         $model = new Product();
+        $chars = [new ProductChar()];
 
 
         if ($model->load(\Yii::$app->request->post())) {
+
+            //product chars
+            $chars = CommonModels::createMultiple(ProductChar::classname());
+            CommonModels::loadMultiple($chars, \Yii::$app->request->post());
+
+            // validate all models
+            $valid = $model->validate();
+            $valid = CommonModels::validateMultiple($chars) && $valid;
+
+            if ($valid) {
+                $transaction = \Yii::$app->db->beginTransaction();
+                try {
+                    if ($flag = $model->save(false)) {
+                        foreach ($chars as $char) {
+                            $char->product_id = $model->id;
+                            if (! ($flag = $char->save(false))) {
+                                $transaction->rollBack();
+                                break;
+                            }
+                        }
+                    }
+                    if ($flag) {
+                        $transaction->commit();
+                    }
+                } catch (\Exception $e) {
+                    $transaction->rollBack();
+                }
+            }
+
+            //upload image
+            $image = UploadedFile::getInstance($model , 'image');
+            if ($image){
+                $model->image = StaticFunctions::saveImage($image , $model->id , 'product');
+            }
+            $model->slug = StaticFunctions::generateSlug($model->title);
+            $model->save();
+            
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             $imageName = time();
             if ($model->save()) {
                
-                $productImage = new ProductImage();
-                $productImage->product_id = $model->id;
-                $productImage->image = $imageName . '.' . $model->imageFile->extension;
-                
-                $productImage->save();
+                $prImages = UploadedFile::getInstances($model , 'gallery');
+                foreach($prImages as $prImage){
+                    
+                    $productImage = new prImage();
+                    $productImage->product_id = $model->id;
+                    $productImage->image = $prImage . '.' . $model->imageFile->extension;
+                    $productImage->save();
+                }
+
                 if ($model->upload($imageName)) {
                     return $this->redirect(['view', 'id' => $model->id]);
                 }
@@ -98,6 +144,7 @@ class ProductController extends Controller
     
         return $this->render('create', [
             'model' => $model,
+            'chars' => (empty($chars)) ? [new ProductChar()] : $chars,
         ]);
     }
 
