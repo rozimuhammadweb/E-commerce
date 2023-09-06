@@ -35,6 +35,7 @@ class Payment extends \yii\db\ActiveRecord
     {
         return [
             [['order_id', 'amount', 'payment_system_id', 'status'], 'integer'],
+            ['status', 'in', 'range' => [1, -1]],
             [['created_at'], 'safe'],
             [['transaction_id'], 'string', 'max' => 255],
             [['order_id'], 'exist', 'skipOnError' => true, 'targetClass' => Order::class, 'targetAttribute' => ['order_id' => 'id']],

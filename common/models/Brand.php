@@ -64,10 +64,13 @@ class Brand extends \yii\db\ActiveRecord
     public function upload($imageName)
     {
         if ($this->validate()) {
-            $this->imageFile->saveAs('uploads/' . $imageName . '.' . $this->imageFile->extension);
+            $uploadPath = 'uploads/BrandImage/';
+            if (!is_dir($uploadPath)) {
+                mkdir($uploadPath, 0777, true);
+            }
+            $this->imageFile->saveAs($uploadPath . $imageName . '.' . $this->imageFile->extension);
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 }

@@ -12,9 +12,15 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="meta-tag-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
 
+<?=
+\yii\bootstrap5\Breadcrumbs::widget([
+    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+])
+?>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
 
-</div>
+</div></div>

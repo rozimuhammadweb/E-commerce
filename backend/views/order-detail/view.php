@@ -14,6 +14,13 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="order-detail-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+
+<?=
+\yii\bootstrap5\Breadcrumbs::widget([
+    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+])
+?>
 
     <p>
         <?= Html::a('Update', ['update', 'order_id' => $model->order_id, 'product_id' => $model->product_id], ['class' => 'btn btn-primary']) ?>
@@ -35,4 +42,4 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
-</div>
+</div></div>

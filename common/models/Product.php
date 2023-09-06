@@ -49,14 +49,15 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             [['description'], 'string'],
-            [['category_id', 'brand_id', 'status', 'price'], 'integer'],
+            ['status', 'integer'],
+            ['status', 'in', 'range' => [1, -1]],
+            [['category_id', 'brand_id', 'price'], 'integer'],
             [['specification', 'created_at', 'updated_at', 'deleted_at'], 'safe'],
             [['title', 'SKU'], 'string', 'max' => 255],
             [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
 
             [['brand_id'], 'exist', 'skipOnError' => true, 'targetClass' => Brand::class, 'targetAttribute' => ['brand_id' => 'id']],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['category_id' => 'id']],
-            [['slug'], 'string', 'max' => 300],
 
         ];
     }
@@ -76,7 +77,6 @@ class Product extends \yii\db\ActiveRecord
             'specification' => 'Specification',
             'status' => 'Status',
             'price' => 'Price',
-            
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'deleted_at' => 'Deleted At',
@@ -179,6 +179,8 @@ class Product extends \yii\db\ActiveRecord
     } else {
         return false;
     }
+
+    
 }
 
 }

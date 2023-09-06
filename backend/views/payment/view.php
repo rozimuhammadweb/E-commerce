@@ -14,6 +14,13 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="payment-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+
+<?=
+\yii\bootstrap5\Breadcrumbs::widget([
+    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+])
+?>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -35,8 +42,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'payment_system_id',
             'transaction_id',
             'created_at',
-            'status',
+            [
+                'attribute' => 'status',
+                'value' => function($model) {
+                    return $model->status == -1 ? 'In Active' : 'Active';
+                }
+            ],
         ],
     ]) ?>
 
-</div>
+</div></div>
