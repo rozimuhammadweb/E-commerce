@@ -1,5 +1,6 @@
 <?php
 
+use yii\bootstrap5\Breadcrumbs;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -15,6 +16,13 @@ $this->params['breadcrumbs'][] = 'Update';
 ?>
 
 <div class="product-update">
+<div class="row">
+
+<?=
+Breadcrumbs::widget([
+    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+])
+?>
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -65,5 +73,5 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <?php ActiveForm::end(); ?>
 
-</div>
+</div></div>
 

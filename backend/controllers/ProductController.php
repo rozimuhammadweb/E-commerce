@@ -106,7 +106,6 @@ class ProductController extends Controller
 
         return $this->render('create', [
             'model' => $model,
-            'primage'=> $prImage,
         ]);
     }
 
