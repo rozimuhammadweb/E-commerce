@@ -83,10 +83,62 @@ $this->registerCss($css);
 
     <?= $form->field($model, 'SKU')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'specification')->textInput() ?>
+<!--    --><?php //= $form->field($model, 'specification')->textInput() ?>
 
     <?= $form->field($model, 'status')->widget(SwitchInput::classname(), [])?>
 
+
+    <div class="dynamic_form" style="margin-top:30px;border:1px solid #ccc;padding:10px;border-radius:10px;">
+
+        <?php
+        DynamicFormWidget::begin([
+       'widgetContainer' => 'dynamicform_wrapper', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]
+            'widgetBody' => '.container-items', // required: css class selector
+            'widgetItem' => '.item', // required: css class
+            'limit' => 20, // the maximum times, an element can be cloned (default 999)
+            'min' => 1, // 0 or 1 (default 1)
+            'insertButton' => '.add-item', // css class
+            'deleteButton' => '.remove-item', // css class
+           'model' => $chars[0],
+            'formId' => 'w0',
+            'formFields' => [
+                'atttribute',
+                'value'
+            ],
+        ]); ?>
+        <div class="container-items"><!-- widgetContainer -->
+            <?php foreach ($chars as $i => $char): ?>
+                <div class="item panel panel-default"><!-- widgetBody -->
+                    <div class="panel-heading">
+                        <div class="pull-right">
+                            <button type="button" class="add-item btn btn-success btn-xs"><i class="fas fa-plus"></i></button>
+                            <button type="button" class="remove-item btn btn-danger btn-xs"><i class="fas fa-minus"></i></button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="panel-body">
+                        <?php
+                        // necessary for update action.
+                        if (! $char->isNewRecord) {
+                            echo Html::activeHiddenInput($char, "[{$i}]id");
+                        }
+                        ?>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <?= $form->field($char, "[{$i}]atttribute")->textInput(['maxlength' => true]) ?>
+                            </div>
+                            <div class="col-sm-6">
+                                <?= $form->field($char, "[{$i}]value")->textInput(['maxlength' => true]) ?>
+                            </div>
+                        </div><!-- .row -->
+
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <?php DynamicFormWidget::end(); ?>
+
+    </div>
 
     <?= $form->field($model, 'price')->textInput() ?>
 

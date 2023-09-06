@@ -12,6 +12,15 @@ use yii\widgets\Pjax;
 
 $this->title = 'Brands';
 $this->params['breadcrumbs'][] = $this->title;
+
+\yii\widgets\Breadcrumbs::widget([
+    'homeLink' => [
+        'label' => Yii::t('yii', 'Dashboard'),
+        'url' => Yii::$app->homeUrl,
+    ],
+    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+])
+
 ?>
 <div class="brand-index">
 
@@ -20,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Brand', ['create'], ['class' => 'btn-fill-md radius-4 text-light bg-light-sea-green']) ?>
     </p>
+
 
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

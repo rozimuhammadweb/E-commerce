@@ -27,6 +27,7 @@ use Yii;
  * @property OrderDetail[] $orderDetails
  * @property Order[] $orders
  * @property ProductImage $productImage
+ * @property string|null $slug
  */
 class Product extends \yii\db\ActiveRecord
 {
