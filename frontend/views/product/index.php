@@ -11,9 +11,13 @@
         </div>
         <div class="jumbotron-caption">
             <h3 class="jumbo-title">Virtual Reality Headsets</h3>
-            <p class="jumbo-subtitle">Nullam dignissim elit ut urna rutrum, a fermentum mi auctor. Mauris efficitur magna orci, et dignissim lacus scelerisque sit amet. Proin malesuada tincidunt nisl ac commodo. Vivamus eleifend porttitor ex sit amet suscipit. Vestibulum at ullamcorper lacus, vel facilisis arcu. Aliquam erat volutpat.
+            <p class="jumbo-subtitle">Nullam dignissim elit ut urna rutrum, a fermentum mi auctor. Mauris efficitur
+                magna orci, et dignissim lacus scelerisque sit amet. Proin malesuada tincidunt nisl ac commodo. Vivamus
+                eleifend porttitor ex sit amet suscipit. Vestibulum at ullamcorper lacus, vel facilisis arcu. Aliquam
+                erat volutpat.
                 <br>
-                <br>Maecenas in sodales nisl. Pellentesque ac nibh mi. Ut lobortis odio nulla, congue rhoncus risus facilisis eget. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                <br>Maecenas in sodales nisl. Pellentesque ac nibh mi. Ut lobortis odio nulla, congue rhoncus risus
+                facilisis eget. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
                 <a href="#">read more <i class="tm tm-long-arrow-right"></i></a>
             </p>
         </div>
@@ -73,7 +77,8 @@
     <nav class="techmarket-advanced-pagination">
         <form class="form-adv-pagination" method="post">
             <input type="number" value="1" class="form-control" step="1" max="5" min="1" size="2" id="goto-page">
-        </form> of 5<a href="#" class="next page-numbers">→</a>
+        </form>
+        of 5<a href="#" class="next page-numbers">→</a>
     </nav>
     <!-- .techmarket-advanced-pagination -->
 </div>
@@ -86,7 +91,7 @@
             <?= \yii\widgets\ListView::widget([
                 'dataProvider' => $dataProvider,
                 'itemView' => '_index',
-                'options' => ['class' => 'products' , 'id' => 'prducts_block'], // Удаляем класс list-view
+                'options' => ['class' => 'products', 'id' => 'prducts_block'], // Удаляем класс list-view
                 'layout' => "{items}\n{summary}\n{pager}",
                 'itemOptions' => function ($model, $key, $index, $widget) {
                     return ['class' => 'product first']; // Указываем класс элемента и убираем атрибут data-key
@@ -108,15 +113,19 @@
             <div class="products">
                 <div class="product list-view-large first ">
                     <div class="media">
-                        <img width="224" height="197" alt="" class="attachment-shop_catalog size-shop_catalog wp-post-image" src="/images/products/1.jpg">
+                        <img width="224" height="197" alt=""
+                             class="attachment-shop_catalog size-shop_catalog wp-post-image"
+                             src="/images/products/1.jpg">
                         <div class="media-body">
                             <div class="product-info">
                                 <div class="yith-wcwl-add-to-wishlist">
                                     <a href="wishlist.html" rel="nofollow" class="add_to_wishlist"> Add to Wishlist</a>
                                 </div>
                                 <!-- .yith-wcwl-add-to-wishlist -->
-                                <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link" href="single-product-fullwidth.html">
-                                    <h2 class="woocommerce-loop-product__title">60UH6150 60-Inch 4K Ultra HD Smart LED TV</h2>
+                                <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
+                                   href="single-product-fullwidth.html">
+                                    <h2 class="woocommerce-loop-product__title">60UH6150 60-Inch 4K Ultra HD Smart LED
+                                        TV</h2>
                                     <div class="techmarket-product-rating">
                                         <div title="Rated 5.00 out of 5" class="star-rating">
                                                                             <span style="width:100%">
@@ -134,10 +143,19 @@
                                 <!-- .brand -->
                                 <div class="woocommerce-product-details__short-description">
                                     <ul>
-                                        <li>CUJO smart firewall brings business-level Internet security to protect all of your home devices</li>
-                                        <li>Internet Security: Guard your network and smart devices against hacks, malware, and cyber threats</li>
-                                        <li>Mobile App: Monitor your wired and wireless network activity with a sleek iPhone or Android app</li>
-                                        <li>CUJO connects to your wireless router with an ethernet cable. CUJO is not compatible with Luma and does not support Google Wifi Mesh. CUJO works with Eero in Bridge mode.</li>
+                                        <li>CUJO smart firewall brings business-level Internet security to protect all
+                                            of your home devices
+                                        </li>
+                                        <li>Internet Security: Guard your network and smart devices against hacks,
+                                            malware, and cyber threats
+                                        </li>
+                                        <li>Mobile App: Monitor your wired and wireless network activity with a sleek
+                                            iPhone or Android app
+                                        </li>
+                                        <li>CUJO connects to your wireless router with an ethernet cable. CUJO is not
+                                            compatible with Luma and does not support Google Wifi Mesh. CUJO works with
+                                            Eero in Bridge mode.
+                                        </li>
                                     </ul>
                                 </div>
                                 <!-- .woocommerce-product-details__short-description -->
@@ -153,7 +171,8 @@
                                 </div>
                                 <span class="price">
                                                                     <span class="woocommerce-Price-amount amount">
-                                                                        <span class="woocommerce-Price-currencySymbol">$</span>730.00</span>
+                                                                        <span
+                                                                            class="woocommerce-Price-currencySymbol">$</span>730.00</span>
                                                                 </span>
                                 <!-- .price -->
                                 <a class="button add_to_cart_button" href="cart.html">Add to Cart</a>
@@ -168,15 +187,19 @@
                 <!-- .product -->
                 <div class="product list-view-large ">
                     <div class="media">
-                        <img width="224" height="197" alt="" class="attachment-shop_catalog size-shop_catalog wp-post-image" src="/images/products/2.jpg">
+                        <img width="224" height="197" alt=""
+                             class="attachment-shop_catalog size-shop_catalog wp-post-image"
+                             src="/images/products/2.jpg">
                         <div class="media-body">
                             <div class="product-info">
                                 <div class="yith-wcwl-add-to-wishlist">
                                     <a href="wishlist.html" rel="nofollow" class="add_to_wishlist"> Add to Wishlist</a>
                                 </div>
                                 <!-- .yith-wcwl-add-to-wishlist -->
-                                <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link" href="single-product-fullwidth.html">
-                                    <h2 class="woocommerce-loop-product__title">60UH6150 60-Inch 4K Ultra HD Smart LED TV</h2>
+                                <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
+                                   href="single-product-fullwidth.html">
+                                    <h2 class="woocommerce-loop-product__title">60UH6150 60-Inch 4K Ultra HD Smart LED
+                                        TV</h2>
                                     <div class="techmarket-product-rating">
                                         <div title="Rated 5.00 out of 5" class="star-rating">
                                                                             <span style="width:100%">
@@ -194,10 +217,19 @@
                                 <!-- .brand -->
                                 <div class="woocommerce-product-details__short-description">
                                     <ul>
-                                        <li>CUJO smart firewall brings business-level Internet security to protect all of your home devices</li>
-                                        <li>Internet Security: Guard your network and smart devices against hacks, malware, and cyber threats</li>
-                                        <li>Mobile App: Monitor your wired and wireless network activity with a sleek iPhone or Android app</li>
-                                        <li>CUJO connects to your wireless router with an ethernet cable. CUJO is not compatible with Luma and does not support Google Wifi Mesh. CUJO works with Eero in Bridge mode.</li>
+                                        <li>CUJO smart firewall brings business-level Internet security to protect all
+                                            of your home devices
+                                        </li>
+                                        <li>Internet Security: Guard your network and smart devices against hacks,
+                                            malware, and cyber threats
+                                        </li>
+                                        <li>Mobile App: Monitor your wired and wireless network activity with a sleek
+                                            iPhone or Android app
+                                        </li>
+                                        <li>CUJO connects to your wireless router with an ethernet cable. CUJO is not
+                                            compatible with Luma and does not support Google Wifi Mesh. CUJO works with
+                                            Eero in Bridge mode.
+                                        </li>
                                     </ul>
                                 </div>
                                 <!-- .woocommerce-product-details__short-description -->
@@ -213,7 +245,8 @@
                                 </div>
                                 <span class="price">
                                                                     <span class="woocommerce-Price-amount amount">
-                                                                        <span class="woocommerce-Price-currencySymbol">$</span>730.00</span>
+                                                                        <span
+                                                                            class="woocommerce-Price-currencySymbol">$</span>730.00</span>
                                                                 </span>
                                 <!-- .price -->
                                 <a class="button add_to_cart_button" href="cart.html">Add to Cart</a>
@@ -228,15 +261,19 @@
                 <!-- .product -->
                 <div class="product list-view-large ">
                     <div class="media">
-                        <img width="224" height="197" alt="" class="attachment-shop_catalog size-shop_catalog wp-post-image" src="/images/products/3.jpg">
+                        <img width="224" height="197" alt=""
+                             class="attachment-shop_catalog size-shop_catalog wp-post-image"
+                             src="/images/products/3.jpg">
                         <div class="media-body">
                             <div class="product-info">
                                 <div class="yith-wcwl-add-to-wishlist">
                                     <a href="wishlist.html" rel="nofollow" class="add_to_wishlist"> Add to Wishlist</a>
                                 </div>
                                 <!-- .yith-wcwl-add-to-wishlist -->
-                                <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link" href="single-product-fullwidth.html">
-                                    <h2 class="woocommerce-loop-product__title">60UH6150 60-Inch 4K Ultra HD Smart LED TV</h2>
+                                <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
+                                   href="single-product-fullwidth.html">
+                                    <h2 class="woocommerce-loop-product__title">60UH6150 60-Inch 4K Ultra HD Smart LED
+                                        TV</h2>
                                     <div class="techmarket-product-rating">
                                         <div title="Rated 5.00 out of 5" class="star-rating">
                                                                             <span style="width:100%">
@@ -254,10 +291,19 @@
                                 <!-- .brand -->
                                 <div class="woocommerce-product-details__short-description">
                                     <ul>
-                                        <li>CUJO smart firewall brings business-level Internet security to protect all of your home devices</li>
-                                        <li>Internet Security: Guard your network and smart devices against hacks, malware, and cyber threats</li>
-                                        <li>Mobile App: Monitor your wired and wireless network activity with a sleek iPhone or Android app</li>
-                                        <li>CUJO connects to your wireless router with an ethernet cable. CUJO is not compatible with Luma and does not support Google Wifi Mesh. CUJO works with Eero in Bridge mode.</li>
+                                        <li>CUJO smart firewall brings business-level Internet security to protect all
+                                            of your home devices
+                                        </li>
+                                        <li>Internet Security: Guard your network and smart devices against hacks,
+                                            malware, and cyber threats
+                                        </li>
+                                        <li>Mobile App: Monitor your wired and wireless network activity with a sleek
+                                            iPhone or Android app
+                                        </li>
+                                        <li>CUJO connects to your wireless router with an ethernet cable. CUJO is not
+                                            compatible with Luma and does not support Google Wifi Mesh. CUJO works with
+                                            Eero in Bridge mode.
+                                        </li>
                                     </ul>
                                 </div>
                                 <!-- .woocommerce-product-details__short-description -->
@@ -273,7 +319,8 @@
                                 </div>
                                 <span class="price">
                                                                     <span class="woocommerce-Price-amount amount">
-                                                                        <span class="woocommerce-Price-currencySymbol">$</span>730.00</span>
+                                                                        <span
+                                                                            class="woocommerce-Price-currencySymbol">$</span>730.00</span>
                                                                 </span>
                                 <!-- .price -->
                                 <a class="button add_to_cart_button" href="cart.html">Add to Cart</a>
@@ -288,15 +335,19 @@
                 <!-- .product -->
                 <div class="product list-view-large ">
                     <div class="media">
-                        <img width="224" height="197" alt="" class="attachment-shop_catalog size-shop_catalog wp-post-image" src="/images/products/4.jpg">
+                        <img width="224" height="197" alt=""
+                             class="attachment-shop_catalog size-shop_catalog wp-post-image"
+                             src="/images/products/4.jpg">
                         <div class="media-body">
                             <div class="product-info">
                                 <div class="yith-wcwl-add-to-wishlist">
                                     <a href="wishlist.html" rel="nofollow" class="add_to_wishlist"> Add to Wishlist</a>
                                 </div>
                                 <!-- .yith-wcwl-add-to-wishlist -->
-                                <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link" href="single-product-fullwidth.html">
-                                    <h2 class="woocommerce-loop-product__title">60UH6150 60-Inch 4K Ultra HD Smart LED TV</h2>
+                                <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
+                                   href="single-product-fullwidth.html">
+                                    <h2 class="woocommerce-loop-product__title">60UH6150 60-Inch 4K Ultra HD Smart LED
+                                        TV</h2>
                                     <div class="techmarket-product-rating">
                                         <div title="Rated 5.00 out of 5" class="star-rating">
                                                                             <span style="width:100%">
@@ -314,10 +365,19 @@
                                 <!-- .brand -->
                                 <div class="woocommerce-product-details__short-description">
                                     <ul>
-                                        <li>CUJO smart firewall brings business-level Internet security to protect all of your home devices</li>
-                                        <li>Internet Security: Guard your network and smart devices against hacks, malware, and cyber threats</li>
-                                        <li>Mobile App: Monitor your wired and wireless network activity with a sleek iPhone or Android app</li>
-                                        <li>CUJO connects to your wireless router with an ethernet cable. CUJO is not compatible with Luma and does not support Google Wifi Mesh. CUJO works with Eero in Bridge mode.</li>
+                                        <li>CUJO smart firewall brings business-level Internet security to protect all
+                                            of your home devices
+                                        </li>
+                                        <li>Internet Security: Guard your network and smart devices against hacks,
+                                            malware, and cyber threats
+                                        </li>
+                                        <li>Mobile App: Monitor your wired and wireless network activity with a sleek
+                                            iPhone or Android app
+                                        </li>
+                                        <li>CUJO connects to your wireless router with an ethernet cable. CUJO is not
+                                            compatible with Luma and does not support Google Wifi Mesh. CUJO works with
+                                            Eero in Bridge mode.
+                                        </li>
                                     </ul>
                                 </div>
                                 <!-- .woocommerce-product-details__short-description -->
@@ -333,7 +393,8 @@
                                 </div>
                                 <span class="price">
                                                                     <span class="woocommerce-Price-amount amount">
-                                                                        <span class="woocommerce-Price-currencySymbol">$</span>730.00</span>
+                                                                        <span
+                                                                            class="woocommerce-Price-currencySymbol">$</span>730.00</span>
                                                                 </span>
                                 <!-- .price -->
                                 <a class="button add_to_cart_button" href="cart.html">Add to Cart</a>
@@ -348,15 +409,19 @@
                 <!-- .product -->
                 <div class="product list-view-large last">
                     <div class="media">
-                        <img width="224" height="197" alt="" class="attachment-shop_catalog size-shop_catalog wp-post-image" src="/images/products/5.jpg">
+                        <img width="224" height="197" alt=""
+                             class="attachment-shop_catalog size-shop_catalog wp-post-image"
+                             src="/images/products/5.jpg">
                         <div class="media-body">
                             <div class="product-info">
                                 <div class="yith-wcwl-add-to-wishlist">
                                     <a href="wishlist.html" rel="nofollow" class="add_to_wishlist"> Add to Wishlist</a>
                                 </div>
                                 <!-- .yith-wcwl-add-to-wishlist -->
-                                <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link" href="single-product-fullwidth.html">
-                                    <h2 class="woocommerce-loop-product__title">60UH6150 60-Inch 4K Ultra HD Smart LED TV</h2>
+                                <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
+                                   href="single-product-fullwidth.html">
+                                    <h2 class="woocommerce-loop-product__title">60UH6150 60-Inch 4K Ultra HD Smart LED
+                                        TV</h2>
                                     <div class="techmarket-product-rating">
                                         <div title="Rated 5.00 out of 5" class="star-rating">
                                                                             <span style="width:100%">
@@ -374,10 +439,19 @@
                                 <!-- .brand -->
                                 <div class="woocommerce-product-details__short-description">
                                     <ul>
-                                        <li>CUJO smart firewall brings business-level Internet security to protect all of your home devices</li>
-                                        <li>Internet Security: Guard your network and smart devices against hacks, malware, and cyber threats</li>
-                                        <li>Mobile App: Monitor your wired and wireless network activity with a sleek iPhone or Android app</li>
-                                        <li>CUJO connects to your wireless router with an ethernet cable. CUJO is not compatible with Luma and does not support Google Wifi Mesh. CUJO works with Eero in Bridge mode.</li>
+                                        <li>CUJO smart firewall brings business-level Internet security to protect all
+                                            of your home devices
+                                        </li>
+                                        <li>Internet Security: Guard your network and smart devices against hacks,
+                                            malware, and cyber threats
+                                        </li>
+                                        <li>Mobile App: Monitor your wired and wireless network activity with a sleek
+                                            iPhone or Android app
+                                        </li>
+                                        <li>CUJO connects to your wireless router with an ethernet cable. CUJO is not
+                                            compatible with Luma and does not support Google Wifi Mesh. CUJO works with
+                                            Eero in Bridge mode.
+                                        </li>
                                     </ul>
                                 </div>
                                 <!-- .woocommerce-product-details__short-description -->
@@ -393,7 +467,8 @@
                                 </div>
                                 <span class="price">
                                                                     <span class="woocommerce-Price-amount amount">
-                                                                        <span class="woocommerce-Price-currencySymbol">$</span>730.00</span>
+                                                                        <span
+                                                                            class="woocommerce-Price-currencySymbol">$</span>730.00</span>
                                                                 </span>
                                 <!-- .price -->
                                 <a class="button add_to_cart_button" href="cart.html">Add to Cart</a>
@@ -408,15 +483,19 @@
                 <!-- .product -->
                 <div class="product list-view-large first ">
                     <div class="media">
-                        <img width="224" height="197" alt="" class="attachment-shop_catalog size-shop_catalog wp-post-image" src="/images/products/6.jpg">
+                        <img width="224" height="197" alt=""
+                             class="attachment-shop_catalog size-shop_catalog wp-post-image"
+                             src="/images/products/6.jpg">
                         <div class="media-body">
                             <div class="product-info">
                                 <div class="yith-wcwl-add-to-wishlist">
                                     <a href="wishlist.html" rel="nofollow" class="add_to_wishlist"> Add to Wishlist</a>
                                 </div>
                                 <!-- .yith-wcwl-add-to-wishlist -->
-                                <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link" href="single-product-fullwidth.html">
-                                    <h2 class="woocommerce-loop-product__title">60UH6150 60-Inch 4K Ultra HD Smart LED TV</h2>
+                                <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
+                                   href="single-product-fullwidth.html">
+                                    <h2 class="woocommerce-loop-product__title">60UH6150 60-Inch 4K Ultra HD Smart LED
+                                        TV</h2>
                                     <div class="techmarket-product-rating">
                                         <div title="Rated 5.00 out of 5" class="star-rating">
                                                                             <span style="width:100%">
@@ -434,10 +513,19 @@
                                 <!-- .brand -->
                                 <div class="woocommerce-product-details__short-description">
                                     <ul>
-                                        <li>CUJO smart firewall brings business-level Internet security to protect all of your home devices</li>
-                                        <li>Internet Security: Guard your network and smart devices against hacks, malware, and cyber threats</li>
-                                        <li>Mobile App: Monitor your wired and wireless network activity with a sleek iPhone or Android app</li>
-                                        <li>CUJO connects to your wireless router with an ethernet cable. CUJO is not compatible with Luma and does not support Google Wifi Mesh. CUJO works with Eero in Bridge mode.</li>
+                                        <li>CUJO smart firewall brings business-level Internet security to protect all
+                                            of your home devices
+                                        </li>
+                                        <li>Internet Security: Guard your network and smart devices against hacks,
+                                            malware, and cyber threats
+                                        </li>
+                                        <li>Mobile App: Monitor your wired and wireless network activity with a sleek
+                                            iPhone or Android app
+                                        </li>
+                                        <li>CUJO connects to your wireless router with an ethernet cable. CUJO is not
+                                            compatible with Luma and does not support Google Wifi Mesh. CUJO works with
+                                            Eero in Bridge mode.
+                                        </li>
                                     </ul>
                                 </div>
                                 <!-- .woocommerce-product-details__short-description -->
@@ -453,7 +541,8 @@
                                 </div>
                                 <span class="price">
                                                                     <span class="woocommerce-Price-amount amount">
-                                                                        <span class="woocommerce-Price-currencySymbol">$</span>730.00</span>
+                                                                        <span
+                                                                            class="woocommerce-Price-currencySymbol">$</span>730.00</span>
                                                                 </span>
                                 <!-- .price -->
                                 <a class="button add_to_cart_button" href="cart.html">Add to Cart</a>

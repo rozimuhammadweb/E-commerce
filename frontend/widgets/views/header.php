@@ -9,45 +9,24 @@
     <div class="col-full">
         <ul id="menu-top-bar-left" class="nav menu-top-bar-left">
             <li class="menu-item animate-dropdown">
-                <a title="TechMarket eCommerce - Always free delivery" href="contact-v1.html">TechMarket eCommerce
-                    &#8211; Always free delivery</a>
+                <a title="TechMarket eCommerce - Always free delivery" href="">TechMarket elektron tijorat
+                    &#8211; Bepul yetkazib berish</a>
             </li>
             <li class="menu-item animate-dropdown">
-                <a title="Quality Guarantee of products" href="shop.html">Quality Guarantee of products</a>
+                <a title="Quality Guarantee of products" href="">Mahsulotlar sifati kafolati</a>
             </li>
             <li class="menu-item animate-dropdown">
-                <a title="Fast returnings program" href="<?= \yii\helpers\Url::to('/track/index')?>">Fast returnings program</a>
+                <a title="Fast returnings program" href="<?= \yii\helpers\Url::to('/product')?>">Tez qaytarish dasturi</a>
             </li>
             <li class="menu-item animate-dropdown">
-                <a title="No additional fees" href="contact-v2.html">No additional fees</a>
+                <a title="No additional fees" href="">Qo'shimcha to'lovlar yo'q</a>
             </li>
         </ul>
         <!-- .nav -->
         <ul id="menu-top-bar-right" class="nav menu-top-bar-right">
             <li class="hidden-sm-down menu-item animate-dropdown">
-                <a title="Track Your Order" href="track-your-order.html">
+                <a title="Track Your Order" href="">
                     <i class="tm tm-order-tracking"></i>Track Your Order</a>
-            </li>
-            <li class="menu-item menu-item-has-children animate-dropdown dropdown">
-                <a title="Dollar (US)" data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <i class="tm tm-dollar"></i>Dollar (US)
-                    <span class="caret"></span>
-                </a>
-                <ul role="menu" class="dropdown-menu">
-                    <li class="menu-item animate-dropdown">
-                        <a title="AUD" href="#">AUD</a>
-                    </li>
-                    <li class="menu-item animate-dropdown">
-                        <a title="INR" href="#">INR</a>
-                    </li>
-                    <li class="menu-item animate-dropdown">
-                        <a title="AED" href="#">AED</a>
-                    </li>
-                    <li class="menu-item animate-dropdown">
-                        <a title="SGD" href="#">SGD</a>
-                    </li>
-                </ul>
-                <!-- .dropdown-menu -->
             </li>
             <?php
 
@@ -67,7 +46,7 @@
                     echo Html::beginForm(['/site/logout'], 'post',)
                         . Html::submitButton(
                             'Log Out (' . Yii::$app->user->identity->username . ')',
-                            ['class' => ' btn btn-light hover-none']
+                            ['class' => ' btn btn-light hover-none border-none']
                         )
                         . Html::endForm(); ?>
 

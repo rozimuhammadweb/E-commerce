@@ -2,16 +2,16 @@
     <div class="col-full">
         <ul id="menu-top-bar-left" class="nav justify-content-center">
             <li class="menu-item animate-dropdown">
-                <a title="TechMarket eCommerce - Always free delivery" href="contact-v1.html">TechMarket eCommerce &#8211; Always free delivery</a>
+                <a title="TechMarket eCommerce - Always free delivery" href="contact-v1.html">TechMarket elektron tijorat &#8211; Har doim bepul yetkazib berish</a>
             </li>
             <li class="menu-item animate-dropdown">
-                <a title="Quality Guarantee of products" href="shop.html">Quality Guarantee of products</a>
+                <a title="Quality Guarantee of products" href="shop.html">Mahsulotlar sifati kafolati</a>
             </li>
             <li class="menu-item animate-dropdown">
-                <a title="Fast returnings program" href="track-your-order.html">Fast returnings program</a>
+                <a title="Fast returnings program" href="track-your-order.html">Tez qaytarish dasturi</a>
             </li>
             <li class="menu-item animate-dropdown">
-                <a title="No additional fees" href="contact-v2.html">No additional fees</a>
+                <a title="No additional fees" href="contact-v2.html">Qo'shimcha to'lovlar yo'q</a>
             </li>
         </ul>
         <!-- .nav -->
