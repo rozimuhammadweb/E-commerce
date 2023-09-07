@@ -2,7 +2,10 @@
 
 namespace backend\controllers;
 
+use backend\models\CommonModels;
+use common\components\StaticFunctions;
 use common\models\Product;
+use common\models\ProductChar;
 use common\models\ProductImage;
 use common\models\ProductSearch;
 use yii\web\Controller;
@@ -63,13 +66,13 @@ class ProductController extends Controller
         if ($model === null) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
-    
+
         return $this->render('view', [
             'model' => $model,
 
         ]);
     }
-    
+
 
     /**
      * Creates a new Product model.
@@ -82,13 +85,14 @@ class ProductController extends Controller
 
 
         if ($model->load(\Yii::$app->request->post())) {
+            
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             $imageName = time();
             if ($model->save()) {
-               
-                $prImages = UploadedFile::getInstances($model , 'gallery');
-                foreach($prImages as $prImage){
-                    
+
+                $prImages = UploadedFile::getInstances($model, 'gallery');
+                foreach ($prImages as $prImage) {
+
                     $productImage = new prImage();
                     $productImage->product_id = $model->id;
                     $productImage->image = $prImage . '.' . $model->imageFile->extension;
@@ -101,9 +105,10 @@ class ProductController extends Controller
                 }
             }
         }
-    
+
         return $this->render('create', [
             'model' => $model,
+            'chars' => (empty($chars)) ? [new ProductChar()] : $chars,
         ]);
     }
 
@@ -147,21 +152,20 @@ public function actionDeleteImage($id)
 {
     $productImage = ProductImage::findOne($id);
 
-    if ($productImage === null) {
-        throw new NotFoundHttpException('The requested image does not exist.');
+        if ($productImage === null) {
+            throw new NotFoundHttpException('The requested image does not exist.');
+        }
+
+        // Delete the image file from the server
+        $imagePath = \Yii::getAlias('@webroot/uploads/productImage/') . $productImage->image;
+
+        if (unlink($imagePath)) {
+            // Delete the image record from the database
+            $productImage->delete();
+        }
+
+        return $this->redirect(['update', 'id' => $productImage->product_id]);
     }
-
-    // Delete the image file from the server
-    $imagePath = \Yii::getAlias('@webroot/uploads/productImage/') . $productImage->image;
-    
-    if (unlink($imagePath)) {
-        // Delete the image record from the database
-        $productImage->delete();
-    }
-
-    return $this->redirect(['update', 'id' => $productImage->product_id]);
-}
-
 
 
     /**

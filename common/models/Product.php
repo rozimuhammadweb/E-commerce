@@ -27,6 +27,7 @@ use Yii;
  * @property OrderDetail[] $orderDetails
  * @property Order[] $orders
  * @property ProductImage $productImage
+ * @property string|null $slug
  */
 class Product extends \yii\db\ActiveRecord
 {
@@ -56,6 +57,7 @@ class Product extends \yii\db\ActiveRecord
             [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
             [['brand_id'], 'exist', 'skipOnError' => true, 'targetClass' => Brand::class, 'targetAttribute' => ['brand_id' => 'id']],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['category_id' => 'id']],
+
         ];
     }
 
@@ -162,6 +164,10 @@ class Product extends \yii\db\ActiveRecord
     {
         return Brand::find()->all();
     }
+    public function getChars()
+    {
+        $res =  $this->hasMany(ProductChar::className() , ['product_id' => 'id'])->all();
+    }
 
     public function upload($imageName)
     {
@@ -171,6 +177,8 @@ class Product extends \yii\db\ActiveRecord
     } else {
         return false;
     }
+
+    
 }
 
 }
