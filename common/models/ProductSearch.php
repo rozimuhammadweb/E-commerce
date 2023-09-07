@@ -18,7 +18,8 @@ class ProductSearch extends Product
     {
         return [
             [['id', 'category_id', 'brand_id', 'status', 'price'], 'integer'],
-            [['title', 'description', 'SKU', 'created_at', 'updated_at', 'deleted_at'], 'safe'],
+
+            [['title', 'description', 'SKU',  'created_at', 'updated_at', 'deleted_at'], 'safe'],
         ];
     }
 

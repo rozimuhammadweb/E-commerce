@@ -135,14 +135,7 @@ class StaticFunctions {
         return $text;
     }
 
-    public static function getLangId() {
-        $lang = Yii::$app->language;
-        $query = Languages::find()->filterWhere(['abb' => $lang]);
-        if($query->exists() && $query->one()->abb != Yii::$app->params['main_language'])
-            return $query->one()->id;
 
-        return 0;
-    }
     public static function kcfinder($text) {
         $replace = Yii::$app->params['backend'].'/kcfinder/upload/images/';
         $replace2 = Yii::$app->params['backend'].'/kcfinder/upload/files/';
