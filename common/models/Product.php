@@ -51,10 +51,9 @@ class Product extends \yii\db\ActiveRecord
             ['status', 'integer'],
             ['status', 'in', 'range' => [1, -1]],
             [['category_id', 'brand_id', 'price'], 'integer'],
-            [['specification', 'created_at', 'updated_at', 'deleted_at'], 'safe'],
+            [['created_at', 'updated_at', 'deleted_at'], 'safe'],
             [['title', 'SKU'], 'string', 'max' => 255],
             [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
-
             [['brand_id'], 'exist', 'skipOnError' => true, 'targetClass' => Brand::class, 'targetAttribute' => ['brand_id' => 'id']],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['category_id' => 'id']],
         ];
@@ -72,7 +71,6 @@ class Product extends \yii\db\ActiveRecord
             'category_id' => 'Category ID',
             'brand_id' => 'Brand ID',
             'SKU' => 'Sku',
-            'specification' => 'Specification',
             'status' => 'Status',
             'price' => 'Price',
             'created_at' => 'Created At',
