@@ -11,7 +11,7 @@
                                                             <span class="woocommerce-Price-amount amount">
                                                                 <span class="woocommerce-Price-currencySymbol">$</span>800.00</span>
                                                         </span>
-        <h2 class="woocommerce-loop-product__title">Xtreme ultimate splashproof portable speaker</h2>
+        <h2 class="woocommerce-loop-product__title"><?=$model->title?></h2>
     </a>
     <!-- .woocommerce-LoopProduct-link -->
     <div class="techmarket-product-rating">
