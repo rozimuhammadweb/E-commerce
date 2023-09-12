@@ -14,12 +14,8 @@ class ProductController extends Controller
         $query = Product::find()->where(['status' => 1]);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'pagination' => [
-                'pageSize' => 20,
-                'totalCount' => $query->count()
-            ],
         ]);
-        return $this->render('index' , [
+        return $this->render('header' , [
             'dataProvider' => $dataProvider
         ]);
     }

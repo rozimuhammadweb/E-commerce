@@ -16,7 +16,8 @@
                 <a title="Quality Guarantee of products" href="">Mahsulotlar sifati kafolati</a>
             </li>
             <li class="menu-item animate-dropdown">
-                <a title="Fast returnings program" href="<?= \yii\helpers\Url::to('/product')?>">Tez qaytarish dasturi</a>
+                <a title="Fast returnings program" href="<?= \yii\helpers\Url::to('/product') ?>">Tez qaytarish
+                    dasturi</a>
             </li>
             <li class="menu-item animate-dropdown">
                 <a title="No additional fees" href="">Qo'shimcha to'lovlar yo'q</a>
@@ -29,9 +30,7 @@
                     <i class="tm tm-order-tracking"></i>Track Your Order</a>
             </li>
             <?php
-
             use yii\bootstrap5\Html;
-
             if (Yii::$app->user->isGuest){ ?>
             <li class="menu-item">
                 <a title="Register" href="/site/signup">
@@ -751,7 +750,7 @@
                                             <div class="widget widget_nav_menu">
                                                 <ul class="menu">
                                                     <li class="nav-title menu-item">
-                                                        <a href="#">Home Pages</a>
+                                                         <a href="#">Home Pages</a>
                                                     </li>
                                                     <li class="menu-item">
                                                         <a href="home-v1.html">Home v1</a>

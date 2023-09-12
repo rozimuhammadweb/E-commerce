@@ -89,7 +89,7 @@ class CategoryController extends Controller
     /**
      * Updates an existing Category model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $id ID
+     * @param int $id ID  
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -100,7 +100,6 @@ class CategoryController extends Controller
         if ($this->request->isPost) {
             $model->load(\Yii::$app->request->post());
 
-            // Check for a new uploaded file
             $uploadedFile = UploadedFile::getInstance($model, 'imageFile');
             if ($uploadedFile !== null) {
                 $model->imageFile = $uploadedFile;

@@ -10,16 +10,10 @@ class CategoryController extends Controller
 {
     public function actionIndex()
     {
-        $query = Category::find()->where(['status' => 1]);
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-            'pagination' => [
-                'pageSize' => 10,
-                'totalCount' => $query->count()
-            ],
-        ]);
-        return $this->render('index' , [
-            'dataProvider' => $dataProvider
+        $categories = Category::find()->where(['status' => 1])->all();
+        return $this->render('index', [
+            'categories' => $categories
         ]);
     }
+
 }
