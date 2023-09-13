@@ -61,7 +61,7 @@
     <div class="col-full desktop-only">
         <div class="row">
             <div class="site-branding">
-                <a href="home-v1.html" class="custom-logo-link" rel="home">
+                <a href="<?=\yii\helpers\Url::home()?>" class="custom-logo-link" rel="home">
                     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 176 28">
                         <defs>
                             <style>
@@ -734,15 +734,22 @@
             <div class="row">
                 <nav id="navbar-primary" class="navbar-primary" aria-label="Navbar Primary" data-nav="flex-menu">
                     <ul id="menu-navbar-primary" class="nav yamm">
-                        <li class="menu-item animate-dropdown">
-                            <a title="ALL CATEGORIES" href="product-category.html">ALL CATEGORIES</a>
-                        </li>
-                        <li class="menu-item animate-dropdown">
-                            <a title="COMPUTERS &amp; LAPTOPS" href="product-category.html">COMPUTERS &#038; LAPTOPS</a>
-                        </li>
+                        <?php if (!empty($categories)): ?>
+                        <?php foreach ($categories as $category): ?>
+                            <?php
+//                                echo '<pre>';
+//                                print_r($category);die;
+//                                ?>
+                            <?php if($category->childCount == 0): ?>
+<!--                                --><?php //echo 1;die; ?>
+                                    <li class="menu-item animate-dropdown">
+                                        <a title="ALL CATEGORIES" href="<?=\yii\helpers\Url::to(['/product/category' , 'id' => $category->id])?>"><?=$category->name?></a>
+                                    </li>
+                            <?php else: ?>
+<!--                                    --><?php //echo 0;die; ?>
                         <li class="yamm-fw menu-item menu-item-has-children animate-dropdown dropdown">
                             <a title="Pages" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true"
-                               href="#">Pages <span class="caret"></span></a>
+                               href="#"> <span class="caret"></span></a>
                             <ul role="menu" class=" dropdown-menu">
                                 <li class="menu-item menu-item-object-static_block animate-dropdown">
                                     <div class="yamm-content">
@@ -750,7 +757,7 @@
                                             <div class="widget widget_nav_menu">
                                                 <ul class="menu">
                                                     <li class="nav-title menu-item">
-                                                         <a href="#">Home Pages</a>
+                                                        <a href="#">Home Pages</a>
                                                     </li>
                                                     <li class="menu-item">
                                                         <a href="home-v1.html">Home v1</a>
@@ -936,29 +943,9 @@
                             </ul>
                             <!-- .dropdown-menu -->
                         </li>
-                        <li class="menu-item animate-dropdown">
-                            <a title="CAMERAS &amp; PHOTO" href="product-category.html">CAMERAS &#038; PHOTO</a>
-                        </li>
-                        <li class="menu-item animate-dropdown">
-                            <a title="PHONES &amp; TABLETS" href="product-category.html">PHONES &#038; TABLETS</a>
-                        </li>
-                        <li class="menu-item animate-dropdown">
-                            <a title="GAMES &amp; CONSOLES" href="product-category.html">GAMES &#038; CONSOLES</a>
-                        </li>
-                        <li class="menu-item animate-dropdown">
-                            <a title="TV &amp; AUDIO" href="product-category.html">TV &#038; AUDIO</a>
-                        </li>
-                        <li class="menu-item animate-dropdown">
-                            <a title="CAR ELECTRONIC &amp; GPS" href="product-category.html">CAR ELECTRONIC &#038;
-                                GPS</a>
-                        </li>
-                        <li class="menu-item animate-dropdown">
-                            <a title="ACCESORIES" href="product-category.html">ACCESORIES</a>
-                        </li>
-                        <li class="techmarket-flex-more-menu-item dropdown">
-                            <a title="..." href="#" data-toggle="dropdown" class="dropdown-toggle">...</a>
-                            <ul class="overflow-items dropdown-menu"></ul>
-                        </li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                        <?php endif; ?>
                     </ul>
                     <!-- .nav -->
                 </nav>
@@ -973,7 +960,7 @@
         <div class="handheld-header">
             <div class="row">
                 <div class="site-branding">
-                    <a href="home-v1.html" class="custom-logo-link" rel="home">
+                    <a href="<?=\yii\helpers\Url::home()?>" class="custom-logo-link" rel="home">
                         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 176 28">
                             <defs>
                                 <style>

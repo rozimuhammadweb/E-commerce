@@ -30,8 +30,6 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'SKU') ?>
 
-    <?php // echo $form->field($model, 'specification') ?>
-
     <?php // echo $form->field($model, 'status') ?>
 
     <?php // echo $form->field($model, 'price') ?>
@@ -41,6 +39,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'updated_at') ?>
 
     <?php // echo $form->field($model, 'deleted_at') ?>
+
+    <?php // echo $form->field($model, 'slug') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

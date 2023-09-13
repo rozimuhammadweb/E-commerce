@@ -12,7 +12,7 @@ class CategoryController extends Controller
     {
         $categories = Category::find()->where(['status' => 1])->all();
         return $this->render('index', [
-            'categories' => $categories
+            'categorie s' => $categories
         ]);
     }
 
