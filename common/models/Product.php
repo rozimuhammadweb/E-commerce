@@ -48,8 +48,7 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             [['description'], 'string'],
-            ['status', 'integer'],
-            ['status', 'in', 'range' => [1, -1]],
+            ['status', 'in', 'range' => [1, 0]],
             [['category_id', 'brand_id', 'price'], 'integer'],
             [['created_at', 'updated_at', 'deleted_at'], 'safe'],
             [['title', 'SKU'], 'string', 'max' => 255],

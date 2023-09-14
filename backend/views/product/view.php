@@ -35,7 +35,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'category_id',
             'brand_id',
             'SKU',
-            'status',
+            [
+                'attribute' => 'status',
+                'value' => function($model) {
+                    return $model->status == 0 ? 'Faol emas' : 'Faol';
+                }
+            ],
             'image',
             'price',
             'created_at',

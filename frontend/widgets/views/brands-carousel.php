@@ -1,20 +1,21 @@
 <section class="brands-carousel">
     <h2 class="sr-only">Brands Carousel</h2>
-    <div class="col-full" data-ride="tm-slick-carousel" data-wrap=".brands" data-slick="{&quot;slidesToShow&quot;:6,&quot;slidesToScroll&quot;:1,&quot;dots&quot;:false,&quot;arrows&quot;:true,&quot;responsive&quot;:[{&quot;breakpoint&quot;:400,&quot;settings&quot;:{&quot;slidesToShow&quot;:1,&quot;slidesToScroll&quot;:1}},{&quot;breakpoint&quot;:800,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesToScroll&quot;:3}},{&quot;breakpoint&quot;:992,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesToScroll&quot;:3}},{&quot;breakpoint&quot;:1200,&quot;settings&quot;:{&quot;slidesToShow&quot;:4,&quot;slidesToScroll&quot;:4}},{&quot;breakpoint&quot;:1400,&quot;settings&quot;:{&quot;slidesToShow&quot;:5,&quot;slidesToScroll&quot;:5}}]}">
+    <div class="col-full" data-ride="tm-slick-carousel" data-wrap=".brands"
+         data-slick="{&quot;slidesToShow&quot;:6,&quot;slidesToScroll&quot;:1,&quot;dots&quot;:false,&quot;arrows&quot;:true,&quot;responsive&quot;:[{&quot;breakpoint&quot;:400,&quot;settings&quot;:{&quot;slidesToShow&quot;:1,&quot;slidesToScroll&quot;:1}},{&quot;breakpoint&quot;:800,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesToScroll&quot;:3}},{&quot;breakpoint&quot;:992,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesToScroll&quot;:3}},{&quot;breakpoint&quot;:1200,&quot;settings&quot;:{&quot;slidesToShow&quot;:4,&quot;slidesToScroll&quot;:4}},{&quot;breakpoint&quot;:1400,&quot;settings&quot;:{&quot;slidesToShow&quot;:5,&quot;slidesToScroll&quot;:5}}]}">
         <div class="brands">
-            <div class="item">
-                <a href="shop.html">
-                    <figure>
-                        <figcaption class="text-overlay">
-                            <div class="info">
-                                <h4>apple</h4>
-                            </div>
-                            <!-- /.info -->
-                        </figcaption>
-                        <img width="145" height="50" class="img-responsive desaturate" alt="apple"  src="images/brands/1.png">
-                    </figure>
-                </a>
-            </div>
+            <?php if (!empty($brands)): ?>
+
+                <?php foreach ($brands as $brand): ?>
+                    <div class="item">
+                        <a href="<?= \yii\helpers\Url::to(['/shop/brand', 'id' => $brand->id]) ?>">
+                            <img width="145" height="50" class="img-responsive desaturate"
+                                 alt="<?= \yii\helpers\Html::encode($brand->name) ?>" src="<?= $brand->imageFile ?>">
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
+
             <!-- .item -->
             <div class="item">
                 <a href="shop.html">
@@ -25,7 +26,8 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img width="145" height="50" class="img-responsive desaturate" alt="bosch"  src="images/brands/2.png">
+                        <img width="145" height="50" class="img-responsive desaturate" alt="bosch"
+                             src="images/brands/2.png">
                     </figure>
                 </a>
             </div>
@@ -39,7 +41,8 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img width="145" height="50" class="img-responsive desaturate" alt="cannon"  src="images/brands/3.png">
+                        <img width="145" height="50" class="img-responsive desaturate" alt="cannon"
+                             src="images/brands/3.png">
                     </figure>
                 </a>
             </div>
@@ -53,7 +56,8 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img width="145" height="50" class="img-responsive desaturate" alt="connect"  src="images/brands/4.png">
+                        <img width="145" height="50" class="img-responsive desaturate" alt="connect"
+                             src="images/brands/4.png">
                     </figure>
                 </a>
             </div>
@@ -67,7 +71,8 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img width="145" height="50" class="img-responsive desaturate" alt="galaxy"  src="images/brands/5.png">
+                        <img width="145" height="50" class="img-responsive desaturate" alt="galaxy"
+                             src="images/brands/5.png">
                     </figure>
                 </a>
             </div>
@@ -81,7 +86,8 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img width="145" height="50" class="img-responsive desaturate" alt="gopro"  src="images/brands/6.png">
+                        <img width="145" height="50" class="img-responsive desaturate" alt="gopro"
+                             src="images/brands/6.png">
                     </figure>
                 </a>
             </div>
@@ -95,7 +101,8 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img width="145" height="50" class="img-responsive desaturate" alt="handspot"  src="images/brands/7.png">
+                        <img width="145" height="50" class="img-responsive desaturate" alt="handspot"
+                             src="images/brands/7.png">
                     </figure>
                 </a>
             </div>
@@ -109,7 +116,8 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img width="145" height="50" class="img-responsive desaturate" alt="kinova"  src="images/brands/8.png">
+                        <img width="145" height="50" class="img-responsive desaturate" alt="kinova"
+                             src="images/brands/8.png">
                     </figure>
                 </a>
             </div>
@@ -123,7 +131,8 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img width="145" height="50" class="img-responsive desaturate" alt="nespresso"  src="images/brands/9.png">
+                        <img width="145" height="50" class="img-responsive desaturate" alt="nespresso"
+                             src="images/brands/9.png">
                     </figure>
                 </a>
             </div>
@@ -137,7 +146,8 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img width="145" height="50" class="img-responsive desaturate" alt="samsung"  src="images/brands/10.png">
+                        <img width="145" height="50" class="img-responsive desaturate" alt="samsung"
+                             src="images/brands/10.png">
                     </figure>
                 </a>
             </div>
@@ -151,7 +161,8 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img width="145" height="50" class="img-responsive desaturate" alt="speedway"  src="images/brands/11.png">
+                        <img width="145" height="50" class="img-responsive desaturate" alt="speedway"
+                             src="images/brands/11.png">
                     </figure>
                 </a>
             </div>
@@ -165,7 +176,8 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img width="145" height="50" class="img-responsive desaturate" alt="yoko"  src="images/brands/12.png">
+                        <img width="145" height="50" class="img-responsive desaturate" alt="yoko"
+                             src="images/brands/12.png">
                     </figure>
                 </a>
             </div>

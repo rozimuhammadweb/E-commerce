@@ -32,11 +32,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'title',
-            'description:ntext',
+//            'description:ntext',
             'category_id',
             'brand_id',
             //'SKU',
-            //'status',
+            [
+                'attribute' => 'status',
+                'format' => 'raw', // because we're returning HTML content
+                'value' => function ($model) {
+                    if ($model->status == 0) {
+                        return Html::tag('span', 'Faol emas', ['class' => 'label text-danger']);
+                    } else {
+                        return Html::tag('span', 'Faol', ['class' => 'label text-success']);
+                    }
+                },
+            ],
             //'price',
             //'created_at',
             //'updated_at',

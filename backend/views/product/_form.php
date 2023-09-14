@@ -112,8 +112,10 @@ use yii\widgets\ActiveForm;
 
                                 <?= $form->field($model, 'SKU')->textInput(['maxlength' => true]) ?>
 
-                                <?= $form->field($model, 'status')->textInput() ?>
-
+                                <?= $form->field($model, 'status')->radioList([
+                                    '1'=>'Faol',
+                                    '0'=>'Faol emas'
+                                ])?>
                                 <div class="file_input">
                                     <?php
                                         echo '<label class="control-label">Add Attachments</label>';
