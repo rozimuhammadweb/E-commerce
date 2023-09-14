@@ -1,31 +1,41 @@
+<?php
+
+?>
 <div class="homev3-slider-with-banners ">
     <div class="slider">
         <div class="home-v3-slider home-slider">
+            <?php foreach ($banner as $b): ?>
             <div class="slider-1">
-                <img src="https://olcha.uz/image/original/sliders/git ru/DTByGCQA4zo7rtlVo64pZvYlDO6efllHybWDdz7K821mjq2dKbf6TcknTRUJ.png" alt="">
+                <img src="<?= $b->image;
+                ?>" alt="">
                 <div class="caption">
-                    <div class="title">The new-tech gift you are wishing for
-                        <br>is right here</div>
-                    <div class="sub-title">Big screens in incredibly slim designs that in your hand.</div>
-                    <div class="button">Browse now
+                    <div class="title">Siz xohlayotgan yangi texnologiya sovg'asi
+                        <br>shu yerda</div>
+                    <div class="sub-title">Qo'lingizda bo'lgan nihoyatda nozik dizayndagi katta ekranlar.</div>
+                    <div class="button">Hozir koʻrib chiqing
                         <i class="tm tm-long-arrow-right"></i>
                     </div>
 
-                    <div class="bottom-caption">Free shipping on US Terority</div>
+                    <div class="bottom-caption">O'zbekiston hududida bepul yetkazib berish</div>
                 </div>
             </div>
+
+            <?php endforeach; ?>
+            <?php foreach ($banner as $b): ?>
             <div class="slider-1 slider-2">
-                <img src="https://olcha.uz/image/original/sliders/ru/M03dO0iVIK1q9GviqCmCylnkKuF61hb9a8lfUMpU0WGGFZkrZTgq30i5r8h8.png" alt="">
+                <img src="<?= $b->image; ?>" alt="">
                 <div class="caption">
-                    <div class="title">The new-tech gift you are wishing for
-                        <br>is right here</div>
-                    <div class="sub-title">Big screens in incredibly slim designs that in your hand.</div>
-                    <div class="button">Browse now
+                    <div class="title">Siz xohlayotgan yangi texnologiya sovg'asi
+                        <br>shu yerda</div>
+                    <div class="sub-title">Qo'lingizda bo'lgan nihoyatda nozik dizayndagi katta ekranlar.</div>
+                    <div class="button">Hozir koʻrib chiqing
                         <i class="tm tm-long-arrow-right"></i>
                     </div>
-                    <div class="bottom-caption">Free shipping on US Terority</div>
+                    <div class="bottom-caption">O'zbekiston hududida bepul yetkazib berish</div>
                 </div>
             </div>
+            <?php endforeach; ?>
+
         </div>
     </div>
     <div class="features-list">
@@ -34,8 +44,8 @@
                 <div class="media">
                     <i class="feature-icon d-flex mr-3 tm tm-free-delivery"></i>
                     <div class="media-body feature-text">
-                        <h5 class="mt-0">Free Delivery</h5>
-                        <span>from $50</span>
+                        <h5 class="mt-0">Bepul yetkazib berish</h5>
+                        <span>100 ming so'mdan</span>
                     </div>
                 </div>
             </div>
@@ -44,8 +54,8 @@
                 <div class="media">
                     <i class="feature-icon d-flex mr-3 tm tm-feedback"></i>
                     <div class="media-body feature-text">
-                        <h5 class="mt-0">99% Customer</h5>
-                        <span>Feedbacks</span>
+                        <h5 class="mt-0">99% mijoz</h5>
+                        <span>Fikr-mulohazalar</span>
                     </div>
                 </div>
                 <!-- .media -->
@@ -55,8 +65,8 @@
                 <div class="media">
                     <i class="feature-icon d-flex mr-3 tm tm-free-return"></i>
                     <div class="media-body feature-text">
-                        <h5 class="mt-0">365 Days</h5>
-                        <span>for free return</span>
+                        <h5 class="mt-0">365 kun</h5>
+                        <span>bepul qaytarish uchun</span>
                     </div>
                 </div>
                 <!-- .media -->
@@ -66,8 +76,8 @@
                 <div class="media">
                     <i class="feature-icon d-flex mr-3 tm tm-safe-payments"></i>
                     <div class="media-body feature-text">
-                        <h5 class="mt-0">Payment</h5>
-                        <span>Secure System</span>
+                        <h5 class="mt-0">To'lov</h5>
+                        <span>Xavfsiz tizim</span>
                     </div>
                 </div>
                 <!-- .media -->
@@ -77,8 +87,8 @@
                 <div class="media">
                     <i class="feature-icon d-flex mr-3 tm tm-best-brands"></i>
                     <div class="media-body feature-text">
-                        <h5 class="mt-0">Only Best</h5>
-                        <span>Brands</span>
+                        <h5 class="mt-0">Faqat eng yaxshi</h5>
+                        <span>Brendlar</span>
                     </div>
                 </div>
                 <!-- .media -->
@@ -90,7 +100,7 @@
     <!-- /.features list -->
     <section class="section-categories-carousel" id="categories-carousel-2">
         <header class="section-header">
-            <h2 class="section-title">Featured categories</h2>
+            <h2 class="section-title">Tanlangan toifalar</h2>
             <nav class="custom-slick-nav"></nav>
             <!-- .custom-slick-nav -->
         </header>
