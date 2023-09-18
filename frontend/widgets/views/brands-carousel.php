@@ -6,10 +6,13 @@
             <?php if (!empty($brands)): ?>
 
                 <?php foreach ($brands as $brand): ?>
+<!--                --><?php
+//                    $image = \common\components\StaticFunctions::getImage($brand , 'brand')
+//                    ?>
                     <div class="item">
                         <a href="<?= \yii\helpers\Url::to(['/shop/brand', 'id' => $brand->id]) ?>">
                             <img width="145" height="50" class="img-responsive desaturate"
-                                 alt="<?= \yii\helpers\Html::encode($brand->name) ?>" src="<?= $brand->imageFile ?>">
+                                 alt="<?= \yii\helpers\Html::encode($brand->name) ?>" src="<?= $brand->logo ?>">
                         </a>
                     </div>
                 <?php endforeach; ?>
