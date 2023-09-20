@@ -6,7 +6,10 @@
         <div class="home-v3-slider home-slider">
             <?php foreach ($banner as $b): ?>
             <div class="slider-1">
-                <img src="<?= $b->image;
+                <?php
+                $image = \common\components\StaticFunctions::getImage($b, 'Banners', 'image')
+                ?>
+                <img src="<?= $image;
                 ?>" alt="">
                 <div class="caption">
                     <div class="title">Siz xohlayotgan yangi texnologiya sovg'asi
@@ -21,20 +24,20 @@
             </div>
 
             <?php endforeach; ?>
-            <?php foreach ($banner as $b): ?>
-            <div class="slider-1 slider-2">
-                <img src="<?= $b->image; ?>" alt="">
-                <div class="caption">
-                    <div class="title">Siz xohlayotgan yangi texnologiya sovg'asi
-                        <br>shu yerda</div>
-                    <div class="sub-title">Qo'lingizda bo'lgan nihoyatda nozik dizayndagi katta ekranlar.</div>
-                    <div class="button">Hozir koʻrib chiqing
-                        <i class="tm tm-long-arrow-right"></i>
-                    </div>
-                    <div class="bottom-caption">O'zbekiston hududida bepul yetkazib berish</div>
-                </div>
-            </div>
-            <?php endforeach; ?>
+<!--            --><?php //foreach ($banner as $b): ?>
+<!--            <div class="slider-1 slider-2">-->
+<!--                <img src="--><?php //= $image; ?><!--" alt="yoq">-->
+<!--                <div class="caption">-->
+<!--                    <div class="title">Siz xohlayotgan yangi texnologiya sovg'asi-->
+<!--                        <br>shu yerda</div>-->
+<!--                    <div class="sub-title">Qo'lingizda bo'lgan nihoyatda nozik dizayndagi katta ekranlar.</div>-->
+<!--                    <div class="button">Hozir koʻrib chiqing-->
+<!--                        <i class="tm tm-long-arrow-right"></i>-->
+<!--                    </div>-->
+<!--                    <div class="bottom-caption">O'zbekiston hududida bepul yetkazib berish</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            --><?php //endforeach; ?>
 
         </div>
     </div>

@@ -2,11 +2,12 @@
 
 namespace backend\controllers;
 
+use common\components\StaticFunctions;
 use common\models\Banner;
 use common\models\BannerSearch;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 /**
@@ -62,6 +63,22 @@ class BannerController extends Controller
     }
 
     /**
+     * Finds the Banner model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param int $id ID
+     * @return Banner the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = Banner::findOne(['id' => $id])) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
      * Creates a new Banner model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
@@ -69,13 +86,12 @@ class BannerController extends Controller
     public function actionCreate()
     {
         $model = new Banner();
-        if ($this->request->isPost) {
-            $model->load(\Yii::$app->request->post());
-            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
-            $imageName = md5(time());
-            $model->image = $imageName . "." . $model->imageFile->extension;
+        if ($model->load(\Yii::$app->request->post()) && $model->save()) {
+            $imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($imageFile) {
+                $model->image = StaticFunctions::saveImage($imageFile, $model->id, 'Banners');
+            }
             if ($model->save()) {
-                $model->upload($imageName);
                 return $this->redirect(['index']);
             } else {
                 print_r($model->getErrors());
@@ -85,7 +101,6 @@ class BannerController extends Controller
         return $this->render('create', ['model' => $model]);
     }
 
-
     /**
      * Updates an existing Banner model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -93,25 +108,22 @@ class BannerController extends Controller
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public
+    function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($this->request->isPost) {
-            $model->load(\Yii::$app->request->post());
-
+        $oldImage = $model->image;
+        if ($this->request->isPost &&   $model->load(\Yii::$app->request->post())) {
             // Check for a new uploaded file
             $uploadedFile = UploadedFile::getInstance($model, 'imageFile');
-            if ($uploadedFile !== null) {
-                $model->imageFile = $uploadedFile;
-                $imageName = md5(time());
-                $model->image = $imageName . "." . $model->imageFile->extension;
+            if ($uploadedFile) {
+                $model->image = StaticFunctions::saveImage($uploadedFile , $model->id , 'Banners');
+                StaticFunctions::deleteImage($oldImage , $model->id , 'Banners');
+            }else{
+                $model->image = $oldImage;
             }
 
             if ($model->save()) {
-                if ($model->imageFile) {
-                    $model->upload($imageName);
-                }
                 return $this->redirect(['index']);
             } else {
                 print_r($model->getErrors());
@@ -134,21 +146,5 @@ class BannerController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
-    }
-
-    /**
-     * Finds the Banner model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id ID
-     * @return Banner the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = Banner::findOne(['id' => $id])) !== null) {
-            return $model;
-        }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }
