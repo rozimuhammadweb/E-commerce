@@ -37,7 +37,6 @@ Breadcrumbs::widget([
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
             'name',
             'logo',
             'short_name',

@@ -32,7 +32,7 @@ class Brand extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'logo', 'short_name'], 'required'],
+            [['name', 'short_name'], 'required'],
             [['name', 'logo', 'short_name'], 'string', 'max' => 255],
             [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
         ];
@@ -64,13 +64,10 @@ class Brand extends \yii\db\ActiveRecord
     public function upload($imageName)
     {
         if ($this->validate()) {
-            $uploadPath = 'uploads/BrandImage/';
-            if (!is_dir($uploadPath)) {
-                mkdir($uploadPath, 0777, true);
-            }
-            $this->imageFile->saveAs($uploadPath . $imageName . '.' . $this->imageFile->extension);
+            $this->imageFile->saveAs('uploads/brandImage/' . $imageName . '.' . $this->imageFile->extension);
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 }
