@@ -21,6 +21,7 @@
         "kartik-v/yii2-widget-fileinput": "dev-master",
         "kartik-v/yii2-widget-select2": "dev-master",
         "wbraganca/yii2-enumerables": "~1.1",
+        "elasticsearch/elasticsearch": "^8.9"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
