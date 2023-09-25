@@ -33,8 +33,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'title',
 //            'description:ntext',
-            'category_id',
-            'brand_id',
+//            'category_id',
+            [
+                'attribute'=>'category_id',
+                'value'=>'category.name',
+                'filter'=>\yii\helpers\ArrayHelper::map(\common\models\Category::find()->all(),'id','name')
+            ],
+            [
+                'attribute'=>'brand_id',
+                'value'=>'brand.name',
+                'filter'=>\yii\helpers\ArrayHelper::map(\common\models\Brand::find()->all(),'id','name')
+            ],
+//            'brand_id',
             //'SKU',
             [
                 'attribute' => 'status',
