@@ -157,6 +157,36 @@ use yii\widgets\ActiveForm;
                 </div>
             </div>
 
+                                <?php if(!empty($prImages)): ?>
+
+                                    <div class="panel panel-default p-3">
+                                        <h4>Tovar rasmlari</h4>
+                                        <table class="table table-bordered table-striped">
+                                            <tbody>
+                                            <?php foreach ($prImages as $galleryImage): ?>
+
+                                                <tr>
+                                                    <td style="padding: 20px;vertical-align: middle;"><img style="max-width: 60px;" src="<?=Yii::$app->params['frontend'] . Yii::$app->params['uploads_url']  ?>/product-images/<?=$galleryImage->product_id?>/m_<?=$galleryImage->image?>" alt=""></td>
+                                                    <td style="padding: 20px;vertical-align: middle;">
+                                                        <a href="<?=\yii\helpers\Url::to(['product/del-item','id'=>$galleryImage->id])?>" class="btn btn-danger rem">O'chirish</a>
+                                                    </td>
+                                                </tr>
+
+                                            <?php endforeach; ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                <?php else: ?>
+
+                                <?php endif; ?>
+
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
@@ -164,6 +194,18 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 </div>
+<script>
+    var buttons = document.querySelectorAll('.rem');
+    for(let i=0;i<buttons.length;i++){
+        buttons[i].addEventListener('click',function(e){
+            let del = confirm("Rostdan ham o'chirilsinmi?");
+            if(!del){
+                e.preventDefault();
+                return false;
+            }
+        })
+    }
+</script>
 <script>
     var buttons = document.querySelectorAll('.rem');
     for(let i=0;i<buttons.length;i++){
