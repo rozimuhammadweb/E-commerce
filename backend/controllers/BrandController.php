@@ -117,13 +117,13 @@ class BrandController extends Controller
     {
         $model = $this->findModel($id);
         $oldImage = $model->logo;
-        if ($this->request->isPost &&   $model->load(\Yii::$app->request->post())) {
-            // Check for a new uploaded file
+        if ($this->request->isPost && $model->load(\Yii::$app->request->post())) {
+
             $uploadedFile = UploadedFile::getInstance($model, 'imageFile');
             if ($uploadedFile) {
-                $model->logo = StaticFunctions::saveImage($uploadedFile , $model->id , 'Brands');
-                StaticFunctions::deleteImage($oldImage , $model->id , 'Brands');
-            }else{
+                $model->logo = StaticFunctions::saveImage($uploadedFile, $model->id, 'Brands');
+                StaticFunctions::deleteImage($oldImage, $model->id, 'Brands');
+            } else {
                 $model->logo = $oldImage;
             }
 
