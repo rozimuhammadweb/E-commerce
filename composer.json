@@ -20,7 +20,8 @@
         "yiisoft/yii2-symfonymailer": "~2.0.3",
         "kartik-v/yii2-widget-fileinput": "dev-master",
         "kartik-v/yii2-widget-select2": "dev-master",
-        "wbraganca/yii2-enumerables": "~1.1"
+        "wbraganca/yii2-enumerables": "~1.1",
+        "elasticsearch/elasticsearch": "^8.9"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
@@ -48,7 +49,8 @@
     },
     "config": {
         "allow-plugins": {
-            "yiisoft/yii2-composer" : true
+            "yiisoft/yii2-composer": true,
+            "php-http/discovery": true
         },
         "process-timeout": 1800,
         "fxp-asset": {

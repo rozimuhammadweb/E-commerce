@@ -9,10 +9,7 @@ class Header extends Widget
 {
     public function run()
     {
-        $categories = Category::find()->where(['status' => 1, 'PID' => NULL])->all();
-//        echo '<pre>';
-//        print_r($categories);die;
-
+        $categories = Category::find()->where(['status' => 1])->all();
         return $this->render('header', [
             'categories' => $categories
         ]);

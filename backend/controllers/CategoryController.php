@@ -2,12 +2,12 @@
 
 namespace backend\controllers;
 
-use common\models\Banner;
+use common\components\StaticFunctions;
 use common\models\Category;
 use common\models\CategorySearch;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 /**
@@ -63,6 +63,22 @@ class CategoryController extends Controller
     }
 
     /**
+     * Finds the Category model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param int $id ID
+     * @return Category the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = Category::findOne(['id' => $id])) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
      * Creates a new Category model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
@@ -70,13 +86,13 @@ class CategoryController extends Controller
     public function actionCreate()
     {
         $model = new Category();
-        if ($this->request->isPost) {
-            $model->load(\Yii::$app->request->post());
-            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
-            $imageName = md5(time());
-            $model->image = $imageName . "." . $model->imageFile->extension;
+        if ($model->load(\Yii::$app->request->post()) && $model->save()) {
+            $imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($imageFile) {
+                $model->upload($imageFile);
+                $model->image = StaticFunctions::saveImage($imageFile, $model->id, 'Category');
+            }
             if ($model->save()) {
-                $model->upload($imageName);
                 return $this->redirect(['index']);
             } else {
                 print_r($model->getErrors());
@@ -89,28 +105,25 @@ class CategoryController extends Controller
     /**
      * Updates an existing Category model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $id ID  
+     * @param int $id ID
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($this->request->isPost) {
-            $model->load(\Yii::$app->request->post());
+         $oldImage = $model->image;
+        if ($this->request->isPost && $model->load(\Yii::$app->request->post())) {
 
             $uploadedFile = UploadedFile::getInstance($model, 'imageFile');
-            if ($uploadedFile !== null) {
-                $model->imageFile = $uploadedFile;
-                $imageName = md5(time());
-                $model->image = $imageName . "." . $model->imageFile->extension;
+            if ($uploadedFile) {
+                $model->image = StaticFunctions::saveImage($uploadedFile, $model->id, 'Category');
+                StaticFunctions::deleteImage($oldImage, $model->id, 'Category');
+            } else {
+                $model->image = $oldImage;
             }
 
             if ($model->save()) {
-                if ($model->imageFile) {
-                    $model->upload($imageName);
-                }
                 return $this->redirect(['index']);
             } else {
                 print_r($model->getErrors());
@@ -133,21 +146,5 @@ class CategoryController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
-    }
-
-    /**
-     * Finds the Category model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id ID
-     * @return Category the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = Category::findOne(['id' => $id])) !== null) {
-            return $model;
-        }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

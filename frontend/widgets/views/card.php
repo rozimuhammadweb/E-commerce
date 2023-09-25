@@ -33,33 +33,40 @@
                                             </td>
                                             <td class="product-thumbnail">
                                                 <a href="single-product-fullwidth.html">
-                                                    <img width="180" height="180" alt="" class="wp-post-image" src="single-product-fullwidth.html">
+                                                    <img width="180" height="180" alt="" class="wp-post-image"
+                                                         src="single-product-fullwidth.html">
                                                 </a>
                                             </td>
                                             <td data-title="Product" class="product-name">
                                                 <div class="media cart-item-product-detail">
                                                     <a href="single-product-fullwidth.html">
-                                                        <img width="180" height="180" alt="" class="wp-post-image" src="/images/products/cart-1.jpg">
+                                                        <img width="180" height="180" alt="" class="wp-post-image"
+                                                             src="/images/products/cart-1.jpg">
                                                     </a>
                                                     <div class="media-body align-self-center">
-                                                        <a href="single-product-fullwidth.html">55" KU6470 6 Series UHD  Crystal Colour HDR Smart TV</a>
+                                                        <a href="single-product-fullwidth.html">55" KU6470 6 Series UHD
+                                                            Crystal Colour HDR Smart TV</a>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td data-title="Price" class="product-price">
                                                                     <span class="woocommerce-Price-amount amount">
-                                                                        <span class="woocommerce-Price-currencySymbol">£</span>627.99
+                                                                        <span
+                                                                            class="woocommerce-Price-currencySymbol">£</span>627.99
                                                                     </span>
                                             </td>
                                             <td class="product-quantity" data-title="Quantity">
                                                 <div class="quantity">
                                                     <label for="quantity-input-1">Quantity</label>
-                                                    <input id="quantity-input-1" type="number" name="cart[e2230b853516e7b05d79744fbd4c9c13][qty]" value="1" title="Qty" class="input-text qty text" size="4">
+                                                    <input id="quantity-input-1" type="number"
+                                                           name="cart[e2230b853516e7b05d79744fbd4c9c13][qty]" value="1"
+                                                           title="Qty" class="input-text qty text" size="4">
                                                 </div>
                                             </td>
                                             <td data-title="Total" class="product-subtotal">
                                                                     <span class="woocommerce-Price-amount amount">
-                                                                        <span class="woocommerce-Price-currencySymbol">£</span>627.99
+                                                                        <span
+                                                                            class="woocommerce-Price-currencySymbol">£</span>627.99
                                                                     </span>
                                                 <a title="Remove this item" class="remove" href="#">×</a>
                                             </td>
@@ -70,13 +77,15 @@
                                             </td>
                                             <td class="product-thumbnail">
                                                 <a href="single-product-fullwidth.html">
-                                                    <img width="180" height="180" alt="" class="wp-post-image" src="single-product-fullwidth.html">
+                                                    <img width="180" height="180" alt="" class="wp-post-image"
+                                                         src="single-product-fullwidth.html">
                                                 </a>
                                             </td>
                                             <td data-title="Product" class="product-name">
                                                 <div class="media cart-item-product-detail">
                                                     <a href="single-product-fullwidth.html">
-                                                        <img width="180" height="180" alt="" class="wp-post-image" src="/images/products/cart-2.jpg">
+                                                        <img width="180" height="180" alt="" class="wp-post-image"
+                                                             src="/images/products/cart-2.jpg">
                                                     </a>
                                                     <div class="media-body align-self-center">
                                                         <a href="single-product-fullwidth.html">4K Action Cam GPS</a>
@@ -85,18 +94,22 @@
                                             </td>
                                             <td data-title="Price" class="product-price">
                                                                     <span class="woocommerce-Price-amount amount">
-                                                                        <span class="woocommerce-Price-currencySymbol">£</span>627.99
+                                                                        <span
+                                                                            class="woocommerce-Price-currencySymbol">£</span>627.99
                                                                     </span>
                                             </td>
                                             <td class="product-quantity" data-title="Quantity">
                                                 <div class="quantity">
                                                     <label for="quantity-input-2">Quantity</label>
-                                                    <input id="quantity-input-2" type="number" name="cart[e2230b853516e7b05d79744fbd4c9c13][qty]" value="1" title="Qty" class="input-text qty text" size="4">
+                                                    <input id="quantity-input-2" type="number"
+                                                           name="cart[e2230b853516e7b05d79744fbd4c9c13][qty]" value="1"
+                                                           title="Qty" class="input-text qty text" size="4">
                                                 </div>
                                             </td>
                                             <td data-title="Total" class="product-subtotal">
                                                                     <span class="woocommerce-Price-amount amount">
-                                                                        <span class="woocommerce-Price-currencySymbol">£</span>627.99
+                                                                        <span
+                                                                            class="woocommerce-Price-currencySymbol">£</span>627.99
                                                                     </span>
                                                 <a title="Remove this item" class="remove" href="#">×</a>
                                             </td>
@@ -107,33 +120,40 @@
                                             </td>
                                             <td class="product-thumbnail">
                                                 <a href="single-product-fullwidth.html">
-                                                    <img width="180" height="180" alt="" class="wp-post-image" src="single-product-fullwidth.html">
+                                                    <img width="180" height="180" alt="" class="wp-post-image"
+                                                         src="single-product-fullwidth.html">
                                                 </a>
                                             </td>
                                             <td data-title="Product" class="product-name">
                                                 <div class="media cart-item-product-detail">
                                                     <a href="single-product-fullwidth.html">
-                                                        <img width="180" height="180" alt="" class="wp-post-image" src="/images/products/cart-3.jpg">
+                                                        <img width="180" height="180" alt="" class="wp-post-image"
+                                                             src="/images/products/cart-3.jpg">
                                                     </a>
                                                     <div class="media-body align-self-center">
-                                                        <a href="single-product-fullwidth.html">Bluetooth on-ear PureBass Headphones</a>
+                                                        <a href="single-product-fullwidth.html">Bluetooth on-ear
+                                                            PureBass Headphones</a>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td data-title="Price" class="product-price">
                                                                     <span class="woocommerce-Price-amount amount">
-                                                                        <span class="woocommerce-Price-currencySymbol">£</span>627.99
+                                                                        <span
+                                                                            class="woocommerce-Price-currencySymbol">£</span>627.99
                                                                     </span>
                                             </td>
                                             <td class="product-quantity" data-title="Quantity">
                                                 <div class="quantity">
                                                     <label for="quantity-input-3">Quantity</label>
-                                                    <input id="quantity-input-3" type="number" name="cart[e2230b853516e7b05d79744fbd4c9c13][qty]" value="1" title="Qty" class="input-text qty text" size="4">
+                                                    <input id="quantity-input-3" type="number"
+                                                           name="cart[e2230b853516e7b05d79744fbd4c9c13][qty]" value="1"
+                                                           title="Qty" class="input-text qty text" size="4">
                                                 </div>
                                             </td>
                                             <td data-title="Total" class="product-subtotal">
                                                                     <span class="woocommerce-Price-amount amount">
-                                                                        <span class="woocommerce-Price-currencySymbol">£</span>627.99
+                                                                        <span
+                                                                            class="woocommerce-Price-currencySymbol">£</span>627.99
                                                                     </span>
                                                 <a title="Remove this item" class="remove" href="#">×</a>
                                             </td>
@@ -142,10 +162,13 @@
                                             <td class="actions" colspan="6">
                                                 <div class="coupon">
                                                     <label for="coupon_code">Coupon:</label>
-                                                    <input type="text" placeholder="Coupon code" value="" id="coupon_code" class="input-text" name="coupon_code">
-                                                    <input type="submit" value="Apply coupon" name="apply_coupon" class="button">
+                                                    <input type="text" placeholder="Coupon code" value=""
+                                                           id="coupon_code" class="input-text" name="coupon_code">
+                                                    <input type="submit" value="Apply coupon" name="apply_coupon"
+                                                           class="button">
                                                 </div>
-                                                <input type="submit" value="Update cart" name="update_cart" class="button">
+                                                <input type="submit" value="Update cart" name="update_cart"
+                                                       class="button">
                                             </td>
                                         </tr>
                                         </tbody>
@@ -162,7 +185,8 @@
                                                 <th>Subtotal</th>
                                                 <td data-title="Subtotal">
                                                                         <span class="woocommerce-Price-amount amount">
-                                                                            <span class="woocommerce-Price-currencySymbol">£</span>963.94</span>
+                                                                            <span
+                                                                                class="woocommerce-Price-currencySymbol">£</span>963.94</span>
                                                 </td>
                                             </tr>
                                             <tr class="shipping">
@@ -173,8 +197,10 @@
                                                 <th>Total</th>
                                                 <td data-title="Total">
                                                     <strong>
-                                                                            <span class="woocommerce-Price-amount amount">
-                                                                                <span class="woocommerce-Price-currencySymbol">£</span>963.94</span>
+                                                                            <span
+                                                                                class="woocommerce-Price-amount amount">
+                                                                                <span
+                                                                                    class="woocommerce-Price-currencySymbol">£</span>963.94</span>
                                                     </strong>
                                                 </td>
                                             </tr>
@@ -184,12 +210,17 @@
                                         <div class="wc-proceed-to-checkout">
                                             <form class="woocommerce-shipping-calculator" method="post" action="#">
                                                 <p>
-                                                    <a class="shipping-calculator-button" data-toggle="collapse" href="#shipping-form" aria-expanded="false" aria-controls="shipping-form">Calculate shipping</a>
+                                                    <a class="shipping-calculator-button" data-toggle="collapse"
+                                                       href="#shipping-form" aria-expanded="false"
+                                                       aria-controls="shipping-form">Calculate shipping</a>
                                                 </p>
                                                 <div class="collapse" id="shipping-form">
                                                     <div class="shipping-calculator-form">
-                                                        <p id="calc_shipping_country_field" class="form-row form-row-wide">
-                                                            <select rel="calc_shipping_state" class="country_to_state" id="calc_shipping_country" name="calc_shipping_country">
+                                                        <p id="calc_shipping_country_field"
+                                                           class="form-row form-row-wide">
+                                                            <select rel="calc_shipping_state" class="country_to_state"
+                                                                    id="calc_shipping_country"
+                                                                    name="calc_shipping_country">
                                                                 <option value="">Select a country…</option>
                                                                 <option value="AX">Åland Islands</option>
                                                                 <option value="AF">Afghanistan</option>
@@ -209,54 +240,82 @@
                                                                 <option value="AZ">Azerbaijan</option>
                                                             </select>
                                                         </p>
-                                                        <p id="calc_shipping_state_field" class="form-row form-row-wide validate-required">
+                                                        <p id="calc_shipping_state_field"
+                                                           class="form-row form-row-wide validate-required">
                                                                             <span>
-                                                                                <select id="calc_shipping_state" name="calc_shipping_state">
-                                                                                    <option value="">Select an option…</option>
-                                                                                    <option value="AP">Andhra Pradesh</option>
-                                                                                    <option value="AR">Arunachal Pradesh</option>
+                                                                                <select id="calc_shipping_state"
+                                                                                        name="calc_shipping_state">
+                                                                                    <option
+                                                                                        value="">Select an option…</option>
+                                                                                    <option
+                                                                                        value="AP">Andhra Pradesh</option>
+                                                                                    <option
+                                                                                        value="AR">Arunachal Pradesh</option>
                                                                                     <option value="AS">Assam</option>
                                                                                     <option value="BR">Bihar</option>
-                                                                                    <option value="CT">Chhattisgarh</option>
+                                                                                    <option
+                                                                                        value="CT">Chhattisgarh</option>
                                                                                     <option value="GA">Goa</option>
                                                                                     <option value="GJ">Gujarat</option>
                                                                                     <option value="HR">Haryana</option>
-                                                                                    <option value="HP">Himachal Pradesh</option>
-                                                                                    <option value="JK">Jammu and Kashmir</option>
-                                                                                    <option value="JH">Jharkhand</option>
-                                                                                    <option value="KA">Karnataka</option>
+                                                                                    <option
+                                                                                        value="HP">Himachal Pradesh</option>
+                                                                                    <option
+                                                                                        value="JK">Jammu and Kashmir</option>
+                                                                                    <option
+                                                                                        value="JH">Jharkhand</option>
+                                                                                    <option
+                                                                                        value="KA">Karnataka</option>
                                                                                     <option value="KL">Kerala</option>
-                                                                                    <option value="MP">Madhya Pradesh</option>
-                                                                                    <option value="MH">Maharashtra</option>
+                                                                                    <option
+                                                                                        value="MP">Madhya Pradesh</option>
+                                                                                    <option
+                                                                                        value="MH">Maharashtra</option>
                                                                                     <option value="MN">Manipur</option>
-                                                                                    <option value="ML">Meghalaya</option>
+                                                                                    <option
+                                                                                        value="ML">Meghalaya</option>
                                                                                     <option value="MZ">Mizoram</option>
                                                                                     <option value="NL">Nagaland</option>
                                                                                     <option value="OR">Orissa</option>
                                                                                     <option value="PB">Punjab</option>
-                                                                                    <option value="RJ">Rajasthan</option>
+                                                                                    <option
+                                                                                        value="RJ">Rajasthan</option>
                                                                                     <option value="SK">Sikkim</option>
-                                                                                    <option value="TN">Tamil Nadu</option>
-                                                                                    <option value="TS">Telangana</option>
+                                                                                    <option
+                                                                                        value="TN">Tamil Nadu</option>
+                                                                                    <option
+                                                                                        value="TS">Telangana</option>
                                                                                     <option value="TR">Tripura</option>
-                                                                                    <option value="UK">Uttarakhand</option>
-                                                                                    <option value="UP">Uttar Pradesh</option>
-                                                                                    <option value="WB">West Bengal</option>
+                                                                                    <option
+                                                                                        value="UK">Uttarakhand</option>
+                                                                                    <option
+                                                                                        value="UP">Uttar Pradesh</option>
+                                                                                    <option
+                                                                                        value="WB">West Bengal</option>
                                                                                     <option value="AN">Andaman and Nicobar Islands</option>
-                                                                                    <option value="CH">Chandigarh</option>
+                                                                                    <option
+                                                                                        value="CH">Chandigarh</option>
                                                                                     <option value="DN">Dadra and Nagar Haveli</option>
-                                                                                    <option value="DD">Daman and Diu</option>
+                                                                                    <option
+                                                                                        value="DD">Daman and Diu</option>
                                                                                     <option value="DL">Delhi</option>
-                                                                                    <option value="LD">Lakshadeep</option>
+                                                                                    <option
+                                                                                        value="LD">Lakshadeep</option>
                                                                                     <option value="PY">Pondicherry (Puducherry)</option>
                                                                                 </select>
                                                                             </span>
                                                         </p>
-                                                        <p id="calc_shipping_postcode_field" class="form-row form-row-wide validate-required">
-                                                            <input type="text" id="calc_shipping_postcode" name="calc_shipping_postcode" placeholder="Postcode / ZIP" value="" class="input-text">
+                                                        <p id="calc_shipping_postcode_field"
+                                                           class="form-row form-row-wide validate-required">
+                                                            <input type="text" id="calc_shipping_postcode"
+                                                                   name="calc_shipping_postcode"
+                                                                   placeholder="Postcode / ZIP" value=""
+                                                                   class="input-text">
                                                         </p>
                                                         <p>
-                                                            <button class="button" value="1" name="calc_shipping" type="submit">Update totals</button>
+                                                            <button class="button" value="1" name="calc_shipping"
+                                                                    type="submit">Update totals
+                                                            </button>
                                                         </p>
                                                     </div>
                                                 </div>
